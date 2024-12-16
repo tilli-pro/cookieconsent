@@ -40,7 +40,12 @@ const cssComponents = [
     [
         'abstracts/_light-color-scheme.scss',
         'light-scheme.css'
-    ]
+    ],
+    /** custom themes */
+    [
+        'abstracts/_elegant-black-color-scheme.scss',
+        'elegant-black-scheme.css'
+    ],
 ];
 
 const cssComponentsRollup = cssComponents.map(component => {
