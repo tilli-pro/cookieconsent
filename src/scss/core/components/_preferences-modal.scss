@@ -349,6 +349,8 @@ $service-toggle-knob-icon-width: 1.7px;
         &:disabled {
             cursor: not-allowed;
         }
+
+        pointer-events: auto; /* ensure always-interactable (fix for when there's an underlying dialog) */
     }
 
     .toggle__icon{
