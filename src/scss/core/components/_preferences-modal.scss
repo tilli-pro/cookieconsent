@@ -99,6 +99,8 @@ $service-toggle-knob-icon-width: 1.7px;
         flex: 1;
         overflow-y: auto;
         overflow-y: overlay;
+
+        pointer-events: auto; /* ensure always-interactable (fix for when there's an underlying dialog) */
     }
 
     .pm__section,
@@ -622,6 +624,8 @@ $service-toggle-knob-icon-width: 1.7px;
                 flex-direction: row-reverse;
             }
         }
+
+        pointer-events: auto; /* ensure always-interactable (fix for when there's an underlying dialog) */
     }
     /* END: Box layout */
 
