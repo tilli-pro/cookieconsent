@@ -624,8 +624,6 @@ $service-toggle-knob-icon-width: 1.7px;
                 flex-direction: row-reverse;
             }
         }
-
-        pointer-events: auto; /* ensure always-interactable (fix for when there's an underlying dialog) */
     }
     /* END: Box layout */
 
@@ -762,6 +760,8 @@ $service-toggle-knob-icon-width: 1.7px;
         background: var(--cc-overlay-bg);
         opacity: 0;
         visibility: hidden;
+
+        pointer-events: auto; /* ensure always-interactable (fix for when there's an underlying dialog) */
     }
 
     .cc--anim{
