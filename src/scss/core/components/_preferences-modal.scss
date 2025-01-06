@@ -17,6 +17,10 @@ $service-toggle-knob-icon-width: 1.7px;
 
 #cc-main{
 
+    a {
+        pointer-events: auto; /* ensure always-interactable (fix for when there's an underlying dialog) */
+    }
+
     /* Make sure the preferences modal is always on top of the consent modal */
     .pm-wrapper{
         position: relative;
