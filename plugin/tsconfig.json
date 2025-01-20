@@ -8,7 +8,12 @@
       "~/*": ["./src/*"]
     },
     "plugins": [{ "name": "next" }],
-    "module": "esnext"
+    "module": "esnext",
+    "declaration": true,
+    "declarationMap": true,
+    "emitDeclarationOnly": false,
+    "noEmit": false,
+    "outDir": "${configDir}/dist"
   },
   "include": ["src"],
   "exclude": ["node_modules"]
