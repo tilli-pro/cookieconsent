@@ -7,10 +7,7 @@
   },
   "type": "module",
   "exports": {
-    "./*": {
-      "types": "./dist/*.d.ts",
-      "default": "./dist/*.js"
-    }
+    "./*": "./dist/*"
   },
   "scripts": {
     "build": "tsc",
