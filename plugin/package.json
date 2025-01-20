@@ -1,6 +1,6 @@
 {
   "name": "@tilli-pro/cookieconsent-plugin",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "private": false,
   "publishConfig": {
     "access": "public"
@@ -10,8 +10,7 @@
     "./*": {
       "types": "./dist/*.d.ts",
       "default": [
-        "./src/*.ts",
-        "./src/*.tsx"
+        "./dist/*.js"
       ]
     }
   },
