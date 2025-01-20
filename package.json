@@ -1,5 +1,5 @@
 {
-  "name": "tilli-cookieconsent",
+  "name": "@tilli-pro/cookieconsent",
   "version": "3.0.1",
   "private": false,
   "publishConfig": {
