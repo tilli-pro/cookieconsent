@@ -1,17 +1,18 @@
 {
   "name": "@tilli-pro/cookieconsent-plugin",
-  "version": "0.1.16",
+  "version": "0.1.17",
   "private": false,
   "publishConfig": {
     "access": "public"
   },
   "type": "module",
   "exports": {
+    "./config/translations": {
+      "types": "./dist/config/translations.d.ts",
+      "default": "./dist/config/translations.js"
+    },
     "./*": {
-      "types": [
-        "./dist/*.d.ts",
-        "./dist/*/index.d.ts"
-      ],
+      "types": "./dist/*.d.ts",
       "default": [
         "./dist/*.js",
         "./dist/*/index.js",
