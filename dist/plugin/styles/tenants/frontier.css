@@ -67,5 +67,5 @@
 
 /** font */
 .cc--tenant\:frontier-light #cc-main {
-  font-family: var(--font-frontier-pp-object-sans, inherit), var(--cc-font-family, inherit), inherit !important;
+  font-family: var(--font-frontier-pp-object-sans, var(--cc-font-family)) !important;
 }
