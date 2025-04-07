@@ -1,6 +1,6 @@
-import type { Language, Locale } from "../config/translations/types";
+import type { Language, Locale } from "./config/translations/types";
 import type { TenantRefId, Theme } from "./_types";
-import { COOKIE_CONSENT_TEST_SEARCH_PARAM_KEY_PREFIX } from "../_consts";
+import { COOKIE_CONSENT_TEST_SEARCH_PARAM_KEY_PREFIX } from "./_consts";
 
 type SupportedTenantThemes = Partial<Record<TenantRefId, Theme[]>>;
 const SUPPORTED_TENANT_THEMES = {
