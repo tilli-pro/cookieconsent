@@ -25,10 +25,13 @@ function loadNestedCSS(basePath, obj) {
     for (const [key, value] of Object.entries(obj))
         if (typeof value === "string") {
             const url = makeRemotePath(`${basePath}/${value}`);
+            console.debug(`Loading CSS from ${url}`);
             loadCSS(url);
         }
-        else if (value && typeof value === "object")
+        else if (value && typeof value === "object") {
+            console.debug(`Loading nested CSS from ${basePath}/${key}`);
             loadNestedCSS(`${basePath}/${key}`, value);
+        }
 }
 function isEntryModule() {
     if (typeof document === "undefined")
@@ -50,7 +53,7 @@ function isEntryModule() {
 }
 function always() {
     loadCSS(CC_CSS_URL);
-    loadNestedCSS("/styles", styles);
+    loadNestedCSS("/styles", styles); // TODO: make dynamic (only import dependent styles - aka if a certain `init` config is specified)
     window.cookieConsentTheme = cookieConsentTheme; // used to fetch the correct classname to apply a specified theme | THIS SHOULD BE INJECTED INTO THE <HTML> TAG!!! // TODO: auto-inject (?)
 }
 always();
