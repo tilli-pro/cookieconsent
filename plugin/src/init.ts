@@ -24,7 +24,8 @@ const GIT_CDN_BASE_URL = `https://rawcdn.githack.com`;
 const GIT_CDN_URL = `${GIT_CDN_BASE_URL}/${GIT_REPO}/${GIT_SHA}`;
 const GIT_DIST_URL = `${GIT_CDN_URL}/dist`;
 const makeRemoteURL = (path: string) => `${GIT_DIST_URL}/${path}`;
-export const makeRemotePluginURL = (path: string) => makeRemoteURL(`plugin/${path}`);
+export const makeRemotePluginURL = (path: string) =>
+  makeRemoteURL(`plugin/${path}`);
 
 const CC_CSS_URL = makeRemoteURL("cookieconsent.css");
 
@@ -33,10 +34,14 @@ const getFilenameWithPathFromRemoteURL = (url: string) => {
   const path = urlObj.pathname;
   const file = path.split("/").pop();
   return file;
-}
+};
 
 function loadCSS(url: string) {
-  if (document.querySelector(`link[href*="${getFilenameWithPathFromRemoteURL(url)}"]`)) {
+  if (
+    document.querySelector(
+      `link[href*="${getFilenameWithPathFromRemoteURL(url)}"]`,
+    )
+  ) {
     // console.debug(`CSS already loaded: ${url}`);
     return; // prevent duplication
   }
@@ -62,24 +67,6 @@ function loadNestedPluginCSS(basePath: string, obj: any): void {
     }
 }
 
-function isEntryModule(): boolean {
-  if (typeof document === "undefined") return false;
-  try {
-    const currentModuleUrl = new URL(import.meta.url, document.baseURI).href;
-    const scripts = Array.from(
-      document.querySelectorAll('script[type="module"]'),
-    );
-    return scripts.some((script) => {
-      const src = script.getAttribute("src");
-      if (!src) return false;
-      return new URL(src, document.baseURI).href === currentModuleUrl;
-    });
-  } catch (err) {
-    console.error("Error checking module entry:", err);
-    return false;
-  }
-}
-
 async function always() {
   loadCSS(CC_CSS_URL);
   loadNestedPluginCSS("styles", styles); // TODO: make dynamic (only import dependent styles - aka if a certain `init` config is specified)
@@ -88,17 +75,35 @@ async function always() {
 
 void always();
 
-export async function run(
+export const run = async (
   config: CookieConsentConfig = _config,
-): ReturnType<typeof CookieConsent.run> {
-  return await CookieConsent.run(config);
-}
+): ReturnType<typeof CookieConsent.run> => await CookieConsent.run(config);
 
-if (isEntryModule()) {
-  // console.debug(
-  //   { config: _config },
-  //   "Initializing Cookie Consent (entry module)...",
-  // );
-  const init = makeInitFn(run, _config);
-  void init();
-}
+// ⚠️ NOTE: DISABLED THIS ENTRY MODULE SINCE ALL INITS SHOULD BE USING A SPECIFICALLY-CONFIGURED ENTRY MODULE INSTEAD (e.g. `init/brf.ts`, `init/tilli-website.ts`) !!!
+
+// function isEntryModule(): boolean {
+//   if (typeof document === "undefined") return false;
+//   try {
+//     const currentModuleUrl = new URL(import.meta.url, document.baseURI).href;
+//     const scripts = Array.from(
+//       document.querySelectorAll('script[type="module"]'),
+//     );
+//     return scripts.some((script) => {
+//       const src = script.getAttribute("src");
+//       if (!src) return false;
+//       return new URL(src, document.baseURI).href === currentModuleUrl;
+//     });
+//   } catch (err) {
+//     console.error("Error checking module entry:", err);
+//     return false;
+//   }
+// }
+
+// if (isEntryModule()) {
+//   // console.debug(
+//   //   { config: _config },
+//   //   "Initializing Cookie Consent (entry module)...",
+//   // );
+//   const init = makeInitFn(run, _config);
+//   void init();
+// }

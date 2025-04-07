@@ -1,7 +1,6 @@
 import "https://rawcdn.githack.com/tilli-pro/cookieconsent/0f888b603ba1077d94776af62d2bfb7247e5ffe4/dist/cookieconsent.umd.js?min=1";
 import { cookieConsentTheme } from "./_utils.js";
 import _config from "./config/index.js";
-import { makeInitFn } from "./init/utils.js";
 import styles from "./styles/index.js";
 const GIT_SHA = "2873e29c8e6d8c0324ac16245f1afd53cfd7924e";
 const GIT_REPO = "tilli-pro/cookieconsent";
@@ -42,38 +41,36 @@ function loadNestedPluginCSS(basePath, obj) {
             loadNestedPluginCSS(`${basePath}/${key}`, value);
         }
 }
-function isEntryModule() {
-    if (typeof document === "undefined")
-        return false;
-    try {
-        const currentModuleUrl = new URL(import.meta.url, document.baseURI).href;
-        const scripts = Array.from(document.querySelectorAll('script[type="module"]'));
-        return scripts.some((script) => {
-            const src = script.getAttribute("src");
-            if (!src)
-                return false;
-            return new URL(src, document.baseURI).href === currentModuleUrl;
-        });
-    }
-    catch (err) {
-        console.error("Error checking module entry:", err);
-        return false;
-    }
-}
 async function always() {
     loadCSS(CC_CSS_URL);
     loadNestedPluginCSS("styles", styles); // TODO: make dynamic (only import dependent styles - aka if a certain `init` config is specified)
     window.cookieConsentTheme = cookieConsentTheme; // used to fetch the correct classname to apply a specified theme | THIS SHOULD BE INJECTED INTO THE <HTML> TAG!!! // TODO: auto-inject (?)
 }
 void always();
-export async function run(config = _config) {
-    return await CookieConsent.run(config);
-}
-if (isEntryModule()) {
-    // console.debug(
-    //   { config: _config },
-    //   "Initializing Cookie Consent (entry module)...",
-    // );
-    const init = makeInitFn(run, _config);
-    void init();
-}
+export const run = async (config = _config) => await CookieConsent.run(config);
+// ⚠️ NOTE: DISABLED THIS ENTRY MODULE SINCE ALL INITS SHOULD BE USING A SPECIFICALLY-CONFIGURED ENTRY MODULE INSTEAD (e.g. `init/brf.ts`, `init/tilli-website.ts`) !!!
+// function isEntryModule(): boolean {
+//   if (typeof document === "undefined") return false;
+//   try {
+//     const currentModuleUrl = new URL(import.meta.url, document.baseURI).href;
+//     const scripts = Array.from(
+//       document.querySelectorAll('script[type="module"]'),
+//     );
+//     return scripts.some((script) => {
+//       const src = script.getAttribute("src");
+//       if (!src) return false;
+//       return new URL(src, document.baseURI).href === currentModuleUrl;
+//     });
+//   } catch (err) {
+//     console.error("Error checking module entry:", err);
+//     return false;
+//   }
+// }
+// if (isEntryModule()) {
+//   // console.debug(
+//   //   { config: _config },
+//   //   "Initializing Cookie Consent (entry module)...",
+//   // );
+//   const init = makeInitFn(run, _config);
+//   void init();
+// }

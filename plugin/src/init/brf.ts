@@ -4,7 +4,10 @@ import _config from "../config";
 import { LABELS } from "../config/categories/labels";
 import cookies from "../config/cookies";
 import { run } from "../init";
-import { makeInitFn } from "./utils";
+import {
+  makeInitFn,
+  stripInvalidLinkedCategoriesFromTranslations,
+} from "./utils";
 
 // TODO: auto-detect detect language
 const __LANGUAGE__ = "en"; // "English" ("English")
@@ -55,9 +58,19 @@ const categories: CookieConsentConfig["categories"] = {
   },
 };
 
+// TODO: DRY further w/ `./tilli-website.ts`
+const language: CookieConsentConfig["language"] = {
+  ..._config.language,
+  translations: stripInvalidLinkedCategoriesFromTranslations(
+    _config.language.translations,
+    categories,
+  ),
+};
+
 const config: CookieConsentConfig = {
   ..._config,
   categories,
+  language,
 };
 
 // console.debug({ config }, "Initializing Cookie Consent (BRF)...");

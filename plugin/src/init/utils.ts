@@ -1,11 +1,13 @@
 import type { CookieConsentConfig } from "@tilli-pro/cookieconsent";
-
 import type * as CookieConsent from "@tilli-pro/cookieconsent";
 
 import { injectReactRemoveScrollToggle } from "../config/gui-options/scripts/forceDisableReactRemoveScroll";
 import injectManageCookiePrefsButton from "../config/gui-options/scripts/injectManageCookiePrefsButton";
 
-export const makeInitFn = (initFn: typeof CookieConsent.run, config: CookieConsentConfig) => {
+export const makeInitFn = (
+  initFn: typeof CookieConsent.run,
+  config: CookieConsentConfig,
+) => {
   return async () => {
     /** inject the cookie-consent banner (pop-up) */
     await initFn(config);
@@ -22,3 +24,37 @@ export const makeInitFn = (initFn: typeof CookieConsent.run, config: CookieConse
     injectReactRemoveScrollToggle();
   };
 };
+
+export const stripInvalidLinkedCategoriesFromTranslations = (
+  translations: CookieConsentConfig["language"]["translations"],
+  categories: CookieConsentConfig["categories"],
+): CookieConsentConfig["language"]["translations"] =>
+  Object.fromEntries(
+    Object.entries(translations).map(([lang, translation]) => {
+      if (
+        translation &&
+        typeof translation === "object" &&
+        translation.preferencesModal &&
+        Array.isArray(translation.preferencesModal.sections)
+      ) {
+        /** filter out irrelevant sections */
+        const filteredSections = translation.preferencesModal.sections.filter(
+          (section: any) =>
+            !section.linkedCategory || categories[section.linkedCategory],
+        );
+
+        return [
+          lang,
+          {
+            ...translation,
+            preferencesModal: {
+              ...translation.preferencesModal,
+              sections: filteredSections,
+            },
+          },
+        ];
+      }
+
+      return [lang, translation];
+    }),
+  );

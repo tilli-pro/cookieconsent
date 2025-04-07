@@ -2,7 +2,10 @@ import type { CookieConsentConfig } from "@tilli-pro/cookieconsent";
 
 import _config from "../config";
 import { run } from "../init";
-import { makeInitFn } from "./utils";
+import {
+  makeInitFn,
+  stripInvalidLinkedCategoriesFromTranslations,
+} from "./utils";
 
 // TODO: auto-detect detect language
 const __LANGUAGE__ = "en"; // "English" ("English")
@@ -16,27 +19,13 @@ const categories: CookieConsentConfig["categories"] = {
   marketing: {},
 };
 
-const translations: CookieConsentConfig["language"]["translations"] = {
-  ..._config.language.translations,
-  en: {
-    ..._config.language.translations.en,
-    preferencesModal: {
-      ..._config.language.translations.en.preferencesModal,
-      sections: _config.language.translations.en.preferencesModal.sections
-        .map((section) => {
-          if (section.linkedCategory && !categories[section.linkedCategory])
-            return null!;
-
-          return section;
-        })
-        .filter(Boolean),
-    },
-  },
-};
-
+// TODO: DRY further w/ `./brf.ts`
 const language: CookieConsentConfig["language"] = {
   ..._config.language,
-  translations,
+  translations: stripInvalidLinkedCategoriesFromTranslations(
+    _config.language.translations,
+    categories,
+  ),
 };
 
 const config: CookieConsentConfig = {
@@ -45,6 +34,6 @@ const config: CookieConsentConfig = {
   language,
 };
 
-// console.debug({ config }, "Initializing Cookie Consent (BRF)...");
+// console.debug({ config }, "Initializing Cookie Consent (tilli Website)...");
 const init = makeInitFn(run, config);
 void init();

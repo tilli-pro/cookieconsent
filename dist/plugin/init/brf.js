@@ -2,7 +2,7 @@ import _config from "../config/index.js";
 import { LABELS } from "../config/categories/labels.js";
 import cookies from "../config/cookies/index.js";
 import { run } from "../init.js";
-import { makeInitFn } from "./utils.js";
+import { makeInitFn, stripInvalidLinkedCategoriesFromTranslations, } from "./utils.js";
 // TODO: auto-detect detect language
 const __LANGUAGE__ = "en"; // "English" ("English")
 const categories = {
@@ -50,9 +50,15 @@ const categories = {
         },
     },
 };
+// TODO: DRY further w/ `./tilli-website.ts`
+const language = {
+    ..._config.language,
+    translations: stripInvalidLinkedCategoriesFromTranslations(_config.language.translations, categories),
+};
 const config = {
     ..._config,
     categories,
+    language,
 };
 // console.debug({ config }, "Initializing Cookie Consent (BRF)...");
 const init = makeInitFn(run, config);
