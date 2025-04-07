@@ -6,4 +6,4 @@ const config = {
 };
 
 console.debug({ config }, "Initializing Cookie Consent (BRF)...");
-init(config);
+// init(config);
