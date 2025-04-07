@@ -22,7 +22,7 @@ function isEntryModule() {
     try {
         const currentModuleUrl = new URL(import.meta.url, document.baseURI).href;
         const scripts = Array.from(document.querySelectorAll('script[type="module"]'));
-        return scripts.some(script => {
+        return scripts.some((script) => {
             const src = script.getAttribute("src");
             if (!src)
                 return false;
