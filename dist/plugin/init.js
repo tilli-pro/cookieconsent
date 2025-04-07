@@ -8,7 +8,8 @@ const GIT_REPO = "tilli-pro/cookieconsent";
 const GIT_CDN_BASE_URL = `https://rawcdn.githack.com`;
 const GIT_CDN_URL = `${GIT_CDN_BASE_URL}/${GIT_REPO}/${GIT_SHA}`;
 const GIT_DIST_URL = `${GIT_CDN_URL}/dist`;
-export const makeRemotePath = (path) => `${GIT_DIST_URL}/${path}?min=1`;
+const makeRemotePath = (path) => `${GIT_DIST_URL}/${path}`;
+export const makeRemotePluginPath = (path) => makeRemotePath(`plugin/${path}`);
 const CC_CSS_URL = makeRemotePath("cookieconsent.css");
 function loadCSS(url) {
     if (document.querySelector('link[href*="cookieconsent.css"]'))
@@ -21,16 +22,16 @@ function loadCSS(url) {
     });
     document.head.appendChild(link);
 }
-function loadNestedCSS(basePath, obj) {
+function loadNestedPluginCSS(basePath, obj) {
     for (const [key, value] of Object.entries(obj))
         if (typeof value === "string") {
-            const url = makeRemotePath(`${basePath}/${value}`);
-            console.debug(`Loading CSS from ${url}`);
+            const url = makeRemotePluginPath(`${basePath}/${value}`);
+            console.debug(`Loading plugin CSS from ${url}`);
             loadCSS(url);
         }
         else if (value && typeof value === "object") {
-            console.debug(`Loading nested CSS from ${basePath}/${key}`);
-            loadNestedCSS(`${basePath}/${key}`, value);
+            console.debug(`Loading nested plugin CSS from ${basePath}/${key}`);
+            loadNestedPluginCSS(`${basePath}/${key}`, value);
         }
 }
 function isEntryModule() {
@@ -53,7 +54,7 @@ function isEntryModule() {
 }
 function always() {
     loadCSS(CC_CSS_URL);
-    loadNestedCSS("/styles", styles); // TODO: make dynamic (only import dependent styles - aka if a certain `init` config is specified)
+    loadNestedPluginCSS("styles", styles); // TODO: make dynamic (only import dependent styles - aka if a certain `init` config is specified)
     window.cookieConsentTheme = cookieConsentTheme; // used to fetch the correct classname to apply a specified theme | THIS SHOULD BE INJECTED INTO THE <HTML> TAG!!! // TODO: auto-inject (?)
 }
 always();
