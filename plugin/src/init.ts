@@ -20,7 +20,7 @@ declare global {
 
 const GIT_SHA = "2873e29c8e6d8c0324ac16245f1afd53cfd7924e";
 const GIT_REPO = "tilli-pro/cookieconsent";
-const GIT_CDN_BASE_URL = `https://rawcdn.githack.com`;
+const GIT_CDN_BASE_URL = [`https://raw.githubusercontent.com`, `https://rawcdn.githack.com`][0];
 const GIT_CDN_URL = `${GIT_CDN_BASE_URL}/${GIT_REPO}/${GIT_SHA}`;
 const GIT_DIST_URL = `${GIT_CDN_URL}/dist`;
 const makeRemoteURL = (path: string) => `${GIT_DIST_URL}/${path}`;
