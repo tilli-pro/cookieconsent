@@ -1,11 +1,10 @@
-import "https://cdn.jsdelivr.net/gh/tilli-pro/cookieconsent@0f888b603ba1077d94776af62d2bfb7247e5ffe4/dist/cookieconsent.umd.js";
+import "https://cdn.jsdelivr.net/gh/tilli-pro/cookieconsent@cd9f6ffd15e78228783453e4665657971d09415d/dist/cookieconsent.umd.js";
 
 import type * as _CookieConsent from "@tilli-pro/cookieconsent";
 import type { CookieConsentConfig } from "@tilli-pro/cookieconsent";
 
 import { cookieConsentTheme } from "./_utils";
 import _config from "./config";
-import { makeInitFn } from "./init/utils";
 import styles from "./styles";
 
 declare module CookieConsent {
@@ -18,7 +17,7 @@ declare global {
   }
 }
 
-const GIT_SHA = "5d10d218837ca7ecd0362b35a3333eaf07efe92d";
+const GIT_SHA = "cd9f6ffd15e78228783453e4665657971d09415d";
 const GIT_REPO = "tilli-pro/cookieconsent";
 const GIT_CDN_BASE_URL = "https://cdn.jsdelivr.net/gh";
 const GIT_CDN_URL = `${GIT_CDN_BASE_URL}/${GIT_REPO}@${GIT_SHA}`;
