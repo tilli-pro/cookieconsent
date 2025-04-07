@@ -28,6 +28,7 @@ export const makeInitFn = (
 export const stripInvalidLinkedCategoriesFromTranslations = (
   translations: CookieConsentConfig["language"]["translations"],
   categories: CookieConsentConfig["categories"],
+  alsoClearCookieTables: boolean = false, // FIXME: refactor this to actually just use the proper cookie table accoring to the categories var
 ): CookieConsentConfig["language"]["translations"] =>
   Object.fromEntries(
     Object.entries(translations).map(([lang, translation]) => {
@@ -39,9 +40,14 @@ export const stripInvalidLinkedCategoriesFromTranslations = (
       ) {
         /** filter out irrelevant sections */
         const filteredSections = translation.preferencesModal.sections.filter(
-          (section: any) =>
+          (section: CookieConsent.Section) =>
             !section.linkedCategory || categories[section.linkedCategory],
         );
+
+        if (alsoClearCookieTables)
+          filteredSections.forEach(
+            (section: CookieConsent.Section) => (section.cookieTable = undefined),
+          );
 
         return [
           lang,

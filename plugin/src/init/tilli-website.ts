@@ -22,6 +22,7 @@ const language: CookieConsentConfig["language"] = {
   translations: stripInvalidLinkedCategoriesFromTranslations(
     _config.language.translations,
     categories,
+    true, // clear cookie tables // FIXME: refactor this to actually just use the proper cookie table accoring to the categories var
   ),
 };
 

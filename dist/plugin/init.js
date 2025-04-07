@@ -2,7 +2,7 @@ import "https://cdn.jsdelivr.net/gh/tilli-pro/cookieconsent@0f888b603ba1077d9477
 import { cookieConsentTheme } from "./_utils.js";
 import _config from "./config/index.js";
 import styles from "./styles/index.js";
-const GIT_SHA = "2873e29c8e6d8c0324ac16245f1afd53cfd7924e";
+const GIT_SHA = "5d10d218837ca7ecd0362b35a3333eaf07efe92d";
 const GIT_REPO = "tilli-pro/cookieconsent";
 const GIT_CDN_BASE_URL = "https://cdn.jsdelivr.net/gh";
 const GIT_CDN_URL = `${GIT_CDN_BASE_URL}/${GIT_REPO}@${GIT_SHA}`;

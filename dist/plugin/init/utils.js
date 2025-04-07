@@ -15,13 +15,15 @@ export const makeInitFn = (initFn, config) => {
         injectReactRemoveScrollToggle();
     };
 };
-export const stripInvalidLinkedCategoriesFromTranslations = (translations, categories) => Object.fromEntries(Object.entries(translations).map(([lang, translation]) => {
+export const stripInvalidLinkedCategoriesFromTranslations = (translations, categories, alsoClearCookieTables = false) => Object.fromEntries(Object.entries(translations).map(([lang, translation]) => {
     if (translation &&
         typeof translation === "object" &&
         translation.preferencesModal &&
         Array.isArray(translation.preferencesModal.sections)) {
         /** filter out irrelevant sections */
         const filteredSections = translation.preferencesModal.sections.filter((section) => !section.linkedCategory || categories[section.linkedCategory]);
+        if (alsoClearCookieTables)
+            filteredSections.forEach((section) => (section.cookieTable = undefined));
         return [
             lang,
             {

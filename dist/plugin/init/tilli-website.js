@@ -12,7 +12,7 @@ const categories = {
 // TODO: DRY further w/ `./brf.ts`
 const language = {
     ..._config.language,
-    translations: stripInvalidLinkedCategoriesFromTranslations(_config.language.translations, categories),
+    translations: stripInvalidLinkedCategoriesFromTranslations(_config.language.translations, categories, true),
 };
 const config = {
     ..._config,
