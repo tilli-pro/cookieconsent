@@ -137,7 +137,7 @@ try {
     try {
       if (fs.existsSync(destDir))
         fs.rmSync(destDir, { recursive: true, force: true });
-    
+
       fs.renameSync(backupDestDir, destDir);
       console.log(
         `Restored backup directory from ${backupDestDir} to ${destDir}.`,

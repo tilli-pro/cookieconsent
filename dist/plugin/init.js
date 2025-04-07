@@ -8,11 +8,17 @@ const GIT_REPO = "tilli-pro/cookieconsent";
 const GIT_CDN_BASE_URL = `https://rawcdn.githack.com`;
 const GIT_CDN_URL = `${GIT_CDN_BASE_URL}/${GIT_REPO}/${GIT_SHA}`;
 const GIT_DIST_URL = `${GIT_CDN_URL}/dist`;
-const makeRemotePath = (path) => `${GIT_DIST_URL}/${path}`;
-export const makeRemotePluginPath = (path) => makeRemotePath(`plugin/${path}`);
-const CC_CSS_URL = makeRemotePath("cookieconsent.css");
+const makeRemoteURL = (path) => `${GIT_DIST_URL}/${path}`;
+export const makeRemotePluginURL = (path) => makeRemoteURL(`plugin/${path}`);
+const CC_CSS_URL = makeRemoteURL("cookieconsent.css");
+const getRemotePath = (url) => {
+    const urlObj = new URL(url);
+    const path = urlObj.pathname;
+    const pluginPath = path.split("/").slice(0, -1).join("/");
+    return pluginPath;
+};
 function loadCSS(url) {
-    if (document.querySelector('link[href*="cookieconsent.css"]'))
+    if (document.querySelector(`link[href*="${getRemotePath(url)}"]`))
         return; // prevent duplication
     const link = document.createElement("link");
     Object.assign(link, {
@@ -25,7 +31,7 @@ function loadCSS(url) {
 function loadNestedPluginCSS(basePath, obj) {
     for (const [key, value] of Object.entries(obj))
         if (typeof value === "string") {
-            const url = makeRemotePluginPath(`${basePath}/${value}`);
+            const url = makeRemotePluginURL(`${basePath}/${value}`);
             console.debug(`Loading plugin CSS from ${url}`);
             loadCSS(url);
         }
