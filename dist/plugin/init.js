@@ -60,12 +60,12 @@ function isEntryModule() {
         return false;
     }
 }
-function always() {
+async function always() {
     loadCSS(CC_CSS_URL);
     loadNestedPluginCSS("styles", styles); // TODO: make dynamic (only import dependent styles - aka if a certain `init` config is specified)
     window.cookieConsentTheme = cookieConsentTheme; // used to fetch the correct classname to apply a specified theme | THIS SHOULD BE INJECTED INTO THE <HTML> TAG!!! // TODO: auto-inject (?)
 }
-always();
+void always();
 export async function run(config = _config) {
     return await CookieConsent.run(config);
 }
