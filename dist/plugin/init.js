@@ -2,6 +2,8 @@ import "https://rawcdn.githack.com/tilli-pro/cookieconsent/0f888b603ba1077d94776
 import config from "./config/index.js";
 const CSS_URL = "https://rawcdn.githack.com/tilli-pro/cookieconsent/0f888b603ba1077d94776af62d2bfb7247e5ffe4/dist/cookieconsent.css?min=1";
 function loadCSS(url) {
+    if (document.querySelector('link[href*="cookieconsent.css"]'))
+        return; // prevent duplication
     const link = document.createElement("link");
     Object.assign(link, {
         rel: "stylesheet",
