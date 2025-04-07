@@ -1,7 +1,8 @@
 import _config from "../config/index.js";
-import init from "../init.js";
-import cookies from "../config/cookies/index.js";
 import { LABELS } from "../config/categories/labels.js";
+import cookies from "../config/cookies/index.js";
+import { run } from "../init.js";
+import { makeInitFn } from "./utils.js";
 // TODO: auto-detect detect language
 const __LANGUAGE__ = "en"; // "English" ("English")
 const categories = {
@@ -54,4 +55,5 @@ const config = {
     categories,
 };
 console.debug({ config }, "Initializing Cookie Consent (BRF)...");
-init(config);
+const init = makeInitFn(run, config);
+void init();

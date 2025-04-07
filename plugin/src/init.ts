@@ -4,6 +4,7 @@ import type * as _CookieConsent from "@tilli-pro/cookieconsent";
 import type { CookieConsentConfig } from "@tilli-pro/cookieconsent";
 
 import _config from "./config";
+import { makeInitFn } from "./init/utils";
 
 declare module CookieConsent {
   const run: typeof _CookieConsent.run;
@@ -24,12 +25,6 @@ function loadCSS(url: string) {
   document.head.appendChild(link);
 }
 
-loadCSS(CSS_URL);
-
-export default function init(config: CookieConsentConfig = _config) {
-  CookieConsent.run(config);
-}
-
 function isEntryModule(): boolean {
   if (typeof document === "undefined") return false;
   try {
@@ -48,4 +43,15 @@ function isEntryModule(): boolean {
   }
 }
 
-if (isEntryModule()) init();
+loadCSS(CSS_URL);
+
+export async function run(
+  config: CookieConsentConfig = _config,
+): ReturnType<typeof CookieConsent.run> {
+  return await CookieConsent.run(config);
+}
+
+if (isEntryModule()) {
+  const init = makeInitFn(run, _config);
+  void init();
+}

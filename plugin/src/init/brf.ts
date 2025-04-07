@@ -1,10 +1,10 @@
-import _config from "../config";
-import init from "../init";
-
 import type { CookieConsentConfig } from "@tilli-pro/cookieconsent";
 
-import cookies from "../config/cookies";
+import _config from "../config";
 import { LABELS } from "../config/categories/labels";
+import cookies from "../config/cookies";
+import { run } from "../init";
+import { makeInitFn } from "./utils";
 
 // TODO: auto-detect detect language
 const __LANGUAGE__ = "en"; // "English" ("English")
@@ -58,7 +58,8 @@ const categories: CookieConsentConfig["categories"] = {
 const config: CookieConsentConfig = {
   ..._config,
   categories,
-}
+};
 
 console.debug({ config }, "Initializing Cookie Consent (BRF)...");
-init(config);
+const init = makeInitFn(run, config);
+void init();
