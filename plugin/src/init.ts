@@ -1,4 +1,4 @@
-import "https://rawcdn.githack.com/tilli-pro/cookieconsent/0f888b603ba1077d94776af62d2bfb7247e5ffe4/dist/cookieconsent.umd.js?min=1";
+import "https://cdn.jsdelivr.net/gh/tilli-pro/cookieconsent@0f888b603ba1077d94776af62d2bfb7247e5ffe4/dist/cookieconsent.umd.js";
 
 import type * as _CookieConsent from "@tilli-pro/cookieconsent";
 import type { CookieConsentConfig } from "@tilli-pro/cookieconsent";
