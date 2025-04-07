@@ -1,7 +1,7 @@
 import { COOKIE_PREFERENCES_COOKIE_NAME, REVISION } from "../_consts";
-import categories from "./categories";
-import guiOptions from "./gui-options";
-import translations from "./translations";
+import categories from "./categories/index.js";
+import guiOptions from "./gui-options/index.js";
+import translations from "./translations/index.js";
 export default {
     revision: REVISION,
     guiOptions,

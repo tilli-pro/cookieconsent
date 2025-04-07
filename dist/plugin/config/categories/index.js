@@ -1,5 +1,5 @@
 import cookies from "../cookies";
-import { LABELS } from "./labels";
+import { LABELS } from "./labels.js";
 // TODO: determine whether we need to add "language support" here... This file is probably just for backend purposes.
 const __LANGUAGE__ = "en"; // "English" ("English")
 export default {

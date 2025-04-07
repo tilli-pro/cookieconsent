@@ -10,24 +10,94 @@ const sourceDir = path.resolve(__dirname, "..", "..", "dist");
 const destDir = path.resolve(__dirname, "..", "..", "..", "dist", "plugin"); // new plugin folder
 
 function injectPlugin(src: string, dest: string): void {
-  /** ensure exists */
-  if (!fs.existsSync(dest)) fs.mkdirSync(dest, { recursive: true });
+  try {
+    if (!fs.existsSync(dest)) fs.mkdirSync(dest, { recursive: true });
+  } catch (err) {
+    console.error(`Failed to create directory ${dest}:`, err);
+    throw err;
+  }
 
-  const entries = fs.readdirSync(src, { withFileTypes: true });
+  let entries;
+  try {
+    entries = fs.readdirSync(src, { withFileTypes: true });
+  } catch (err) {
+    console.error(`Failed to read directory ${src}:`, err);
+    throw err;
+  }
 
   for (const entry of entries) {
     const srcPath = path.join(src, entry.name);
     const destPath = path.join(dest, entry.name);
 
-    if (entry.isDirectory()) injectPlugin(srcPath, destPath);
-    else if (entry.isFile()) {
+    if (entry.isDirectory()) {
+      try {
+        injectPlugin(srcPath, destPath);
+      } catch (err) {
+        console.error(`Error processing directory ${srcPath}:`, err);
+      }
+    } else if (entry.isFile()) {
       const ext = path.extname(entry.name);
       /** only copy .js and .css files */
-      if (ext === ".js" || ext === ".css") fs.copyFileSync(srcPath, destPath);
+      if (ext === ".js" || ext === ".css") {
+        try {
+          fs.copyFileSync(srcPath, destPath);
+        } catch (err) {
+          console.error(`Failed to copy file from ${srcPath} to ${destPath}:`, err);
+        }
+      }
     }
   }
 }
 
-injectPlugin(sourceDir, destDir);
+function transformImportPaths(filePath: string): void {
+  try {
+    let code = fs.readFileSync(filePath, "utf8");
+    code = code.replace(
+      /(import\s+.*?\s+from\s+["'])(\.\/[^"']+)(["'])/g,
+      (match, prefix, importPath, suffix) => {
+        const absolutePath = path.resolve(path.dirname(filePath), importPath);
+        if (fs.existsSync(absolutePath + ".js")) {
+          return `${prefix}${importPath}.js${suffix}`;
+        } else if (fs.existsSync(path.join(absolutePath, "index.js"))) {
+          return `${prefix}${importPath}/index.js${suffix}`;
+        }
+        return match;
+      }
+    );
+    fs.writeFileSync(filePath, code, "utf8");
+  } catch (err) {
+    console.error(`Error processing file ${filePath}:`, err);
+  }
+}
 
-console.log(`Plugin files copied from ${sourceDir} to ${destDir}`);
+function processDirectoryForTransform(dir: string): void {
+  let entries;
+  try {
+    entries = fs.readdirSync(dir, { withFileTypes: true });
+  } catch (err) {
+    console.error(`Failed to read directory ${dir}:`, err);
+    return;
+  }
+  for (const entry of entries) {
+    const fullPath = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      processDirectoryForTransform(fullPath);
+    } else if (entry.isFile() && path.extname(entry.name) === ".js") {
+      transformImportPaths(fullPath);
+    }
+  }
+}
+
+try {
+  injectPlugin(sourceDir, destDir);
+  console.log(`Plugin files copied from ${sourceDir} to ${destDir}`);
+} catch (err) {
+  console.error("Error during plugin injection:", err);
+}
+
+try {
+  processDirectoryForTransform(destDir);
+  console.log("Import paths in JS files have been transformed to include explicit file extensions.");
+} catch (err) {
+  console.error("Error during import path transformation:", err);
+}

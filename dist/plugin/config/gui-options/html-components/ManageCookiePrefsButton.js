@@ -1,5 +1,5 @@
 "use client";
-import CookieIcon from "./assets/CookieIcon";
+import CookieIcon from "./assets/CookieIcon.js";
 const translations = {
     en: {
         manageCookiePreferences: "Manage cookie preferences",
