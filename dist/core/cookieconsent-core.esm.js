@@ -1,5 +1,5 @@
 /*!
-* CookieConsent 3.0.1
+* CookieConsent 3.1.5
 * https://github.com/tilli-pro/cookieconsent
 * Author Orest Bida
 * Released under the MIT License
