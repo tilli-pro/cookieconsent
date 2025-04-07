@@ -11,14 +11,14 @@ const GIT_DIST_URL = `${GIT_CDN_URL}/dist`;
 const makeRemoteURL = (path) => `${GIT_DIST_URL}/${path}`;
 export const makeRemotePluginURL = (path) => makeRemoteURL(`plugin/${path}`);
 const CC_CSS_URL = makeRemoteURL("cookieconsent.css");
-const getRemotePath = (url) => {
+const getFilenameWithPathFromRemoteURL = (url) => {
     const urlObj = new URL(url);
     const path = urlObj.pathname;
-    const pluginPath = path.split("/").slice(0, -1).join("/");
-    return pluginPath;
+    const file = path.split("/").pop();
+    return file;
 };
 function loadCSS(url) {
-    if (document.querySelector(`link[href*="${getRemotePath(url)}"]`)) {
+    if (document.querySelector(`link[href*="${getFilenameWithPathFromRemoteURL(url)}"]`)) {
         console.debug(`CSS already loaded: ${url}`);
         return; // prevent duplication
     }

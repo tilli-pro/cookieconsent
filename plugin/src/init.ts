@@ -28,15 +28,15 @@ export const makeRemotePluginURL = (path: string) => makeRemoteURL(`plugin/${pat
 
 const CC_CSS_URL = makeRemoteURL("cookieconsent.css");
 
-const getRemotePath = (url: string) => {
+const getFilenameWithPathFromRemoteURL = (url: string) => {
   const urlObj = new URL(url);
   const path = urlObj.pathname;
-  const pluginPath = path.split("/").slice(0, -1).join("/");
-  return pluginPath;
+  const file = path.split("/").pop();
+  return file;
 }
 
 function loadCSS(url: string) {
-  if (document.querySelector(`link[href*="${getRemotePath(url)}"]`)) {
+  if (document.querySelector(`link[href*="${getFilenameWithPathFromRemoteURL(url)}"]`)) {
     console.debug(`CSS already loaded: ${url}`);
     return; // prevent duplication
   }
