@@ -5,11 +5,17 @@ import categories from "./categories";
 import guiOptions from "./gui-options";
 import translations from "./translations";
 
+declare const process: {
+  env: {
+    NODE_ENV?: "development" | "production";
+  };
+} | undefined;
+
 export default {
   revision: REVISION,
   guiOptions,
   categories,
   language: { default: "en", autoDetect: "browser", translations },
   cookie: { name: COOKIE_PREFERENCES_COOKIE_NAME },
-  hideFromBots: process.env.NODE_ENV === "production", // disabled in local dev to enable ui-testing (via Playwright)
+  hideFromBots: process?.env?.NODE_ENV === "production" || true, // disabled in local dev to enable ui-testing (via Playwright)
 } satisfies CookieConsentConfig;
