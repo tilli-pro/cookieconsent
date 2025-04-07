@@ -3,7 +3,7 @@ import type { CookieConsentConfig } from "@tilli-pro/cookieconsent";
 import type * as CookieConsent from "@tilli-pro/cookieconsent";
 
 import { injectReactRemoveScrollToggle } from "../config/gui-options/scripts/forceDisableReactRemoveScroll";
-// import injectManageCookiePrefsButton from "../config/gui-options/scripts/injectManageCookiePrefsButton";
+import injectManageCookiePrefsButton from "../config/gui-options/scripts/injectManageCookiePrefsButton";
 
 export const makeInitFn = (initFn: typeof CookieConsent.run, config: CookieConsentConfig) => {
   return async () => {
@@ -11,7 +11,7 @@ export const makeInitFn = (initFn: typeof CookieConsent.run, config: CookieConse
     await initFn(config);
 
     /** ...then, inject the floating cookie consent "manage preferences" icon button into the DOM (floats @ the bottom right) */
-    // injectManageCookiePrefsButton();
+    injectManageCookiePrefsButton();
 
     /** ...and, force-disable "react-remove-scroll" -- only upon opening up the "manage preferences" dialog
      *
