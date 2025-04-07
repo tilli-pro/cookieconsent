@@ -52,6 +52,7 @@ export async function run(
 }
 
 if (isEntryModule()) {
+  console.debug({ config: _config }, "Initializing Cookie Consent (entry module)...");
   const init = makeInitFn(run, _config);
   void init();
 }

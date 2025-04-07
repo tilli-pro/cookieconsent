@@ -36,6 +36,7 @@ export async function run(config = _config) {
     return await CookieConsent.run(config);
 }
 if (isEntryModule()) {
+    console.debug({ config: _config }, "Initializing Cookie Consent (entry module)...");
     const init = makeInitFn(run, _config);
     void init();
 }
