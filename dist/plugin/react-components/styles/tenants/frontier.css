@@ -1,0 +1,71 @@
+/** NOTE: to auto-add `!important` suffixes, simply use this RegEx w/ Find + Replace:
+  * > Find: (:)(?![^;]*!important)([^;]+)(;)(?!.*\^)
+  * > Replace: :$2 !important;
+  */
+
+/** `tenant:frontier` color-scheme **/
+.cc--tenant\:frontier-light {
+  --cc-bg: #ffffff !important;
+  --cc-primary-color: #2c2f31 !important;
+  --cc-secondary-color: #5e6266 !important;
+
+  --cc-btn-primary-bg: #ff0037 !important;
+  --cc-btn-primary-color: #ffffff !important;
+  --cc-btn-primary-border-color: var(--cc-btn-primary-bg) !important;
+  --cc-btn-primary-hover-bg: #141928 !important;
+  --cc-btn-primary-hover-color: #ffffff !important;
+  --cc-btn-primary-hover-border-color: var(
+    --cc-btn-primary-hover-bg
+  ) !important;
+
+  --cc-btn-secondary-bg: #eaeff2 !important;
+  --cc-btn-secondary-color: var(--cc-primary-color) !important;
+  --cc-btn-secondary-border-color: var(--cc-btn-secondary-bg) !important;
+  --cc-btn-secondary-hover-bg: #d4dae0 !important;
+  --cc-btn-secondary-hover-color: #000000 !important;
+  --cc-btn-secondary-hover-border-color: #d4dae0 !important;
+
+  --cc-separator-border-color: #f0f4f7 !important;
+
+  --cc-toggle-on-bg: var(--cc-btn-primary-bg) !important;
+  --cc-toggle-off-bg: #667481 !important;
+  --cc-toggle-on-knob-bg: #ffffff !important;
+  --cc-toggle-off-knob-bg: var(--cc-toggle-on-knob-bg) !important;
+
+  --cc-toggle-enabled-icon-color: var(--cc-bg) !important; /* yes (v tick) */
+  --cc-toggle-disabled-icon-color: var(--cc-bg) !important; /* no (x tick) */
+
+  --cc-toggle-readonly-bg: #d5dee2 !important;
+  --cc-toggle-readonly-knob-bg: #fff !important;
+  --cc-toggle-readonly-knob-icon-color: var(--cc-toggle-readonly-bg) !important;
+
+  --cc-section-category-border: var(--cc-cookie-category-block-bg) !important;
+
+  --cc-cookie-category-block-bg: #f0f4f7 !important;
+  --cc-cookie-category-block-border: #f0f4f7 !important;
+  --cc-cookie-category-block-hover-bg: #e9eff4 !important;
+  --cc-cookie-category-block-hover-border: #e9eff4 !important;
+  --cc-cookie-category-expanded-block-bg: transparent !important;
+  --cc-cookie-category-expanded-block-hover-bg: #dee4e9 !important;
+
+  --cc-overlay-bg: rgba(0, 0, 0, 0.65) !important;
+  --cc-webkit-scrollbar-bg: var(--cc-section-category-border) !important;
+  --cc-webkit-scrollbar-hover-bg: var(--cc-btn-primary-hover-bg) !important;
+
+  --cc-footer-bg: var(--cc-btn-secondary-bg) !important;
+  --cc-footer-color: var(--cc-secondary-color) !important;
+  --cc-footer-border-color: #e4eaed !important;
+}
+
+.cc--tenant\:frontier-light button.cm__btn,
+.cc--tenant\:frontier-light button.pm__btn {
+  border-radius: 9999px !important;
+  text-transform: uppercase !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.025em !important;
+}
+
+/** font */
+.cc--tenant\:frontier-light #cc-main {
+  font-family: var(--font-frontier-pp-object-sans), var(--cc-font-family) !important;
+}

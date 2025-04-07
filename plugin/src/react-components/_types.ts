@@ -5,3 +5,4 @@ export type TenantRefId =
   | "freeman"
   | "wgl-energy"
   | "frontier"
+  | "con-edison"

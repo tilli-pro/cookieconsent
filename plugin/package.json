@@ -1,6 +1,6 @@
 {
   "name": "@tilli-pro/cookieconsent-plugin",
-  "version": "0.1.18",
+  "version": "0.2.0",
   "private": false,
   "publishConfig": {
     "access": "public"
@@ -21,6 +21,7 @@
   },
   "scripts": {
     "build": "tsc && cpx \"src/**/*.css\" dist",
+    "postbuild": "tsx ./scripts/postbuild/inject-plugin.ts",
     "clean": "git clean -xdf .cache .turbo dist node_modules",
     "format": "prettier --check . --ignore-path ../../.gitignore --ignore-path .gitignore",
     "lint": "eslint",
@@ -41,6 +42,7 @@
     "cpx": "1.5.0",
     "eslint": "9.12.0",
     "prettier": "3.3.3",
+    "tsx": "4.19.3",
     "typescript": "5.6.2"
   },
   "prettier": "@tilli-pro/prettier-config"
