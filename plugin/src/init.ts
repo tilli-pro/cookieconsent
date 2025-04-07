@@ -29,6 +29,12 @@ export default function init(config = _config) {
   CookieConsent.run(config);
 }
 
+console.debug({
+  currentScript: document.currentScript,
+  currentScriptSrc: document.currentScript?.getAttribute("src"),
+  currentScriptSrcIncludes: document.currentScript?.getAttribute("src")?.includes("/init.js"),
+});
+
 if (
   typeof document !== "undefined" &&
   document.currentScript?.getAttribute("src")?.includes("/init.js")
