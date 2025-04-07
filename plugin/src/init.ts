@@ -29,14 +29,20 @@ export default function init(config = _config) {
   CookieConsent.run(config);
 }
 
-console.debug({
-  currentScript: document.currentScript,
-  currentScriptSrc: document.currentScript?.getAttribute("src"),
-  currentScriptSrcIncludes: document.currentScript?.getAttribute("src")?.includes("/init.js"),
-});
+function isEntryModule(): boolean {
+  if (typeof document === "undefined") return false;
+  try {
+    const currentModuleUrl = new URL(import.meta.url, document.baseURI).href;
+    const scripts = Array.from(document.querySelectorAll('script[type="module"]'));
+    return scripts.some(script => {
+      const src = script.getAttribute("src");
+      if (!src) return false;
+      return new URL(src, document.baseURI).href === currentModuleUrl;
+    });
+  } catch (err) {
+    console.error("Error checking module entry:", err);
+    return false;
+  }
+}
 
-if (
-  typeof document !== "undefined" &&
-  document.currentScript?.getAttribute("src")?.includes("/init.js")
-)
-  init();
+if (isEntryModule()) init();
