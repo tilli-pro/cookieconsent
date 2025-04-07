@@ -3,7 +3,7 @@ import { cookieConsentTheme } from "./_utils.js";
 import _config from "./config/index.js";
 import { makeInitFn } from "./init/utils.js";
 import styles from "./styles/index.js";
-const GIT_SHA = "0f888b603ba1077d94776af62d2bfb7247e5ffe4";
+const GIT_SHA = "2873e29c8e6d8c0324ac16245f1afd53cfd7924e";
 const GIT_REPO = "tilli-pro/cookieconsent";
 const GIT_CDN_BASE_URL = `https://rawcdn.githack.com`;
 const GIT_CDN_URL = `${GIT_CDN_BASE_URL}/${GIT_REPO}/${GIT_SHA}`;
