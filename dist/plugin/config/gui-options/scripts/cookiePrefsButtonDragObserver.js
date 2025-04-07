@@ -1,6 +1,6 @@
 "use client";
 import { showPreferences } from "@tilli-pro/cookieconsent";
-import { buttonId } from "../html-components/ManageCookiePrefsButton";
+import { buttonId } from "../html-components/ManageCookiePrefsButton.js";
 /**
  * attach a MutationObserver the **first time** the user hovers over–
  * enabling a limited "drag up" functionality for the floating button.

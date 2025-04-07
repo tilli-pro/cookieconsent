@@ -1,6 +1,6 @@
 import { jsx as _jsx } from "react/jsx-runtime";
 import "server-only";
-import { COOKIE_CONSENT_ENABLED } from "../_consts";
+import { COOKIE_CONSENT_ENABLED } from "../_consts.js";
 import CookieConsentInitClient from "./CookieConsentInit.client.js";
 import "@tilli-pro/cookieconsent/dist/cookieconsent.css";
 import "./styles/tenants/freeman.css";

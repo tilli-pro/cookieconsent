@@ -1,5 +1,5 @@
-import { LABELS } from "../../categories/labels";
-import commonTranslations from "../common-translations";
+import { LABELS } from "../../categories/labels.js";
+import commonTranslations from "../common-translations.js";
 const COOKIE_PREFIX = "tx-brf-auth."; // remapped from library default ("next-auth.")
 export const translations = {
     de: {

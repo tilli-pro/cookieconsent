@@ -1,6 +1,6 @@
-import cookies from "../../cookies";
-import CookieIcon from "../../gui-options/html-components/assets/CookieIcon";
-import TilliXCallout from "../../gui-options/html-components/TilliXCallout";
+import cookies from "../../cookies/index.js";
+import CookieIcon from "../../gui-options/html-components/assets/CookieIcon.js";
+import TilliXCallout from "../../gui-options/html-components/TilliXCallout.js";
 const __LANGUAGE__ = "fr"; // "French" ("Français")
 const COOKIE_TABLE_HEADERS = {
     name: "Nom",

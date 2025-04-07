@@ -1,4 +1,4 @@
-import { COOKIE_CONSENT_TEST_SEARCH_PARAM_KEY_PREFIX } from "../_consts";
+import { COOKIE_CONSENT_TEST_SEARCH_PARAM_KEY_PREFIX } from "../_consts.js";
 const SUPPORTED_TENANT_THEMES = {
     freeman: ["light"],
     frontier: ["light"],

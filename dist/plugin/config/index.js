@@ -1,4 +1,4 @@
-import { COOKIE_PREFERENCES_COOKIE_NAME, REVISION } from "../_consts";
+import { COOKIE_PREFERENCES_COOKIE_NAME, REVISION } from "../_consts.js";
 import categories from "./categories/index.js";
 import guiOptions from "./gui-options/index.js";
 import translations from "./translations/index.js";

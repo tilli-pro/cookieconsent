@@ -1,5 +1,5 @@
-import { LABELS } from "../../categories/labels";
-import commonTranslations from "../common-translations";
+import { LABELS } from "../../categories/labels.js";
+import commonTranslations from "../common-translations.js";
 const COOKIE_PREFIX = "_tilli_analytics_dd_"; // remapped from library default ("_dd_")
 export const translations = {
     de: {

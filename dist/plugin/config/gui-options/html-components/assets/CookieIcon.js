@@ -1,5 +1,5 @@
 "use client";
-import assets from "../../../../assets";
+import assets from "../../../../assets/index.js";
 export default (centered /* 😉 */, scale = 0.6667, // -> 0.6667 ((100 * n)%)
 topOffset = 0, // -> -0.25 (em)
 rightOffset = 0) => `

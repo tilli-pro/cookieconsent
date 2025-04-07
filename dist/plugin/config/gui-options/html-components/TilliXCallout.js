@@ -1,5 +1,5 @@
 "use client";
-import assets from "../../../assets";
+import assets from "../../../assets/index.js";
 const translations = {
     de: {
         poweredByTilliX: "unterstützt von tilliX",

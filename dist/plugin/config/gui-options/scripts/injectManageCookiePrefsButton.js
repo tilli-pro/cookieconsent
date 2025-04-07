@@ -1,6 +1,6 @@
 "use client";
 import { showPreferences } from "@tilli-pro/cookieconsent";
-import ManageCookiePrefsButton, { containerId, } from "../html-components/ManageCookiePrefsButton";
+import ManageCookiePrefsButton, { containerId, } from "../html-components/ManageCookiePrefsButton.js";
 import cookiePrefsButtonDragObserver, { ontouchend, ontouchstart, } from "./cookiePrefsButtonDragObserver.js";
 /** injects the floating cookie consent "manage preferences" icon button into the DOM */
 const inject = () => {

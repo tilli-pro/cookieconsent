@@ -1,4 +1,4 @@
-import { COOKIE_PREFERENCES_COOKIE_NAME } from "../../_consts";
+import { COOKIE_PREFERENCES_COOKIE_NAME } from "../../_consts.js";
 /** type-safe way to get the user's cookie consent (incl. prefs + metadata)
  * > requires the cookies to be passed in (if server-side, use `cookies()`) */
 export const getUsersCookieConsent = (cookies) => {

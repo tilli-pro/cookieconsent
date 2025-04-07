@@ -7,7 +7,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const sourceDir = path.resolve(__dirname, "..", "..", "dist");
-const destDir = path.resolve(__dirname, "..", "..", "..", "dist", "plugin"); // new plugin folder
+const destDir = path.resolve(__dirname, "..", "..", "..", "dist", "plugin");
 
 function injectPlugin(src: string, dest: string): void {
   try {
@@ -53,7 +53,7 @@ function transformImportPaths(filePath: string): void {
   try {
     let code = fs.readFileSync(filePath, "utf8");
     code = code.replace(
-      /(import\s+.*?\s+from\s+["'])(\.\/[^"']+)(["'])/g,
+      /(import\s+.*?\s+from\s+["'])(\.{1,2}\/[^"']+)(["'])/g,
       (match, prefix, importPath, suffix) => {
         const absolutePath = path.resolve(path.dirname(filePath), importPath);
         if (fs.existsSync(absolutePath + ".js")) {
