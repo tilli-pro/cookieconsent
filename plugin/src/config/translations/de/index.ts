@@ -94,6 +94,13 @@ export default {
       },
 
       {
+        title: "Marketing-Cookies",
+        description:
+          "Diese Cookies werden verwendet, um Werbung bereitzustellen, die für Ihre Interessen relevant ist. Sie können Ihr Surfverhalten auf verschiedenen Websites verfolgen und Werbetreibenden helfen, personalisierte Anzeigen anzuzeigen.",
+        linkedCategory: "marketing",
+      },
+
+      {
         title: "Weitere Informationen",
         description:
           'Bei Fragen zu unserer Cookie-Richtlinie und Ihren Auswahlmöglichkeiten kontaktieren Sie uns bitte unter <a href="mailto:privacy@tilli.pro">privacy@tilli.pro</a>.',

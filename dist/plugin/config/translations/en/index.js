@@ -78,12 +78,8 @@ export default {
             },
             {
                 title: "Marketing cookies",
-                description: "These cookies are used to deliver advertisements that are relevant to your interests. They may track your browsing behaviours across different sites and help advertisers serve more personalized ads.",
+                description: "These cookies are used to deliver advertisements that are relevant to your interests. They may track your browsing behaviors across different sites and help advertisers serve more personalized ads.",
                 linkedCategory: "marketing",
-                // cookieTable: {
-                //   headers: COOKIE_TABLE_HEADERS,
-                //   body: [...cookies.marketing.brf(__LANGUAGE__)],
-                // },
             },
             {
                 title: "More information",

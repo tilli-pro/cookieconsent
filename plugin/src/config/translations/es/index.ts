@@ -94,6 +94,13 @@ export default {
       },
 
       {
+        title: "Cookies de marketing",
+        description:
+          "Estas cookies se utilizan para mostrar anuncios relevantes según tus intereses. Pueden rastrear tu comportamiento de navegación en diferentes sitios y ayudar a los anunciantes a ofrecer anuncios más personalizados.",
+        linkedCategory: "marketing",
+      },
+      
+      {
         title: "Más información",
         description:
           'Para cualquier consulta relacionada con nuestra política de cookies y tus opciones, por favor <a href="mailto:privacy@tilli.pro">contáctanos</a>.',
