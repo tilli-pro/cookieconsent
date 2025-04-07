@@ -21,8 +21,7 @@ const showPreferences =
   typeof CookieConsent !== "undefined" &&
   typeof CookieConsent.showPreferences === "function"
     ? CookieConsent.showPreferences
-    // : (await import("@tilli-pro/cookieconsent")).showPreferences;
-    : () => {} // FIXME: check if this works when importing via npm/react plugin
+    : (await import("@tilli-pro/cookieconsent")).showPreferences;
 
 /** injects the floating cookie consent "manage preferences" icon button into the DOM */
 const inject = (): HTMLDivElement => {

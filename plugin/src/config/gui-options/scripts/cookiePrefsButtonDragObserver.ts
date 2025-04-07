@@ -1,8 +1,20 @@
 "use client";
 
-import { showPreferences } from "@tilli-pro/cookieconsent";
+import type * as _CookieConsent from "@tilli-pro/cookieconsent";
 
 import { buttonId } from "../html-components/ManageCookiePrefsButton";
+
+declare const CookieConsent:
+  | {
+      showPreferences?: typeof _CookieConsent.showPreferences;
+    }
+  | undefined;
+
+const showPreferences =
+  typeof CookieConsent !== "undefined" &&
+  typeof CookieConsent.showPreferences === "function"
+    ? CookieConsent.showPreferences
+    : (await import("@tilli-pro/cookieconsent")).showPreferences;
 
 /**
  * attach a MutationObserver the **first time** the user hovers over–
