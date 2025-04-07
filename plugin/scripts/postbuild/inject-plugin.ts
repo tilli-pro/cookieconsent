@@ -53,8 +53,11 @@ function transformImportPaths(filePath: string): void {
   try {
     let code = fs.readFileSync(filePath, "utf8");
     code = code.replace(
-      /(import\s+.*?\s+from\s+["'])(\.{1,2}\/[^"']+)(["'])/g,
+      /(import\s+(?:.*?\s+from\s+)?["'])(\.{1,2}\/[^"']+)(["'])/g,
       (match, prefix, importPath, suffix) => {
+        // Skip if import path already has a .js or .css extension
+        if (importPath.endsWith(".js") || importPath.endsWith(".css")) return match;
+
         const absolutePath = path.resolve(path.dirname(filePath), importPath);
         if (fs.existsSync(absolutePath + ".js")) {
           return `${prefix}${importPath}.js${suffix}`;
