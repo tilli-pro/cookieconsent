@@ -17,7 +17,7 @@ declare const CookieConsent:
     }
   | undefined;
 
-const showPreferences =
+export const showPreferences =
   typeof CookieConsent !== "undefined" &&
   typeof CookieConsent.showPreferences === "function"
     ? CookieConsent.showPreferences

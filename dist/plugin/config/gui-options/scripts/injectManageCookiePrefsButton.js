@@ -1,7 +1,7 @@
 "use client";
 import ManageCookiePrefsButton, { containerId, } from "../html-components/ManageCookiePrefsButton.js";
 import cookiePrefsButtonDragObserver, { ontouchend, ontouchstart, } from "./cookiePrefsButtonDragObserver.js";
-const showPreferences = typeof CookieConsent !== "undefined" &&
+export const showPreferences = typeof CookieConsent !== "undefined" &&
     typeof CookieConsent.showPreferences === "function"
     ? CookieConsent.showPreferences
     : (await import("@tilli-pro/cookieconsent")).showPreferences;
