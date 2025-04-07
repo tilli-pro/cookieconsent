@@ -1,8 +1,6 @@
 import _config from "../config/index.js";
 import { run } from "../init.js";
 import { makeInitFn, stripInvalidLinkedCategoriesFromTranslations, } from "./utils.js";
-// TODO: auto-detect detect language
-const __LANGUAGE__ = "en"; // "English" ("English")
 const categories = {
     necessary: {
         enabled: true, // "necessary" category is always enabled.

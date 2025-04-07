@@ -7,9 +7,6 @@ import {
   stripInvalidLinkedCategoriesFromTranslations,
 } from "./utils";
 
-// TODO: auto-detect detect language
-const __LANGUAGE__ = "en"; // "English" ("English")
-
 const categories: CookieConsentConfig["categories"] = {
   necessary: {
     enabled: true, // "necessary" category is always enabled.
