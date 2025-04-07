@@ -2,13 +2,14 @@ import "https://rawcdn.githack.com/tilli-pro/cookieconsent/0f888b603ba1077d94776
 
 import type * as _CookieConsent from "@tilli-pro/cookieconsent";
 
-import config from "./config";
+import _config from "./config";
 
 declare module CookieConsent {
   const run: typeof _CookieConsent.run;
 }
 
-const CSS_URL = "https://rawcdn.githack.com/tilli-pro/cookieconsent/0f888b603ba1077d94776af62d2bfb7247e5ffe4/dist/cookieconsent.css?min=1"
+const CSS_URL =
+  "https://rawcdn.githack.com/tilli-pro/cookieconsent/0f888b603ba1077d94776af62d2bfb7247e5ffe4/dist/cookieconsent.css?min=1";
 
 function loadCSS(url: string) {
   if (document.querySelector('link[href*="cookieconsent.css"]')) return; // prevent duplication
@@ -24,4 +25,12 @@ function loadCSS(url: string) {
 
 loadCSS(CSS_URL);
 
-CookieConsent.run(config);
+export default function init(config = _config) {
+  CookieConsent.run(config);
+}
+
+if (
+  typeof document !== "undefined" &&
+  document.currentScript?.getAttribute("src")?.includes("/init.js")
+)
+  init();

@@ -1,3 +1,9 @@
-import "../init";
+import _config from "../config";
+import init from "../init";
 
-console.debug("init BRF test");
+const config = {
+  ..._config,
+};
+
+console.debug({ config }, "Initializing Cookie Consent (BRF)...");
+init(config);
