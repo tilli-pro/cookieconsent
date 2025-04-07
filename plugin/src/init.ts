@@ -36,7 +36,10 @@ const getRemotePath = (url: string) => {
 }
 
 function loadCSS(url: string) {
-  if (document.querySelector(`link[href*="${getRemotePath(url)}"]`)) return; // prevent duplication
+  if (document.querySelector(`link[href*="${getRemotePath(url)}"]`)) {
+    console.debug(`CSS already loaded: ${url}`);
+    return; // prevent duplication
+  }
 
   const link = document.createElement("link");
   Object.assign(link, {

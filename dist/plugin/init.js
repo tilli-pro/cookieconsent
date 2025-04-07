@@ -18,8 +18,10 @@ const getRemotePath = (url) => {
     return pluginPath;
 };
 function loadCSS(url) {
-    if (document.querySelector(`link[href*="${getRemotePath(url)}"]`))
+    if (document.querySelector(`link[href*="${getRemotePath(url)}"]`)) {
+        console.debug(`CSS already loaded: ${url}`);
         return; // prevent duplication
+    }
     const link = document.createElement("link");
     Object.assign(link, {
         rel: "stylesheet",
