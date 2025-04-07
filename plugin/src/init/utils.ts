@@ -2,7 +2,7 @@ import type { CookieConsentConfig } from "@tilli-pro/cookieconsent";
 
 import type * as CookieConsent from "@tilli-pro/cookieconsent";
 
-// import { injectReactRemoveScrollToggle } from "../config/gui-options/scripts/forceDisableReactRemoveScroll";
+import { injectReactRemoveScrollToggle } from "../config/gui-options/scripts/forceDisableReactRemoveScroll";
 // import injectManageCookiePrefsButton from "../config/gui-options/scripts/injectManageCookiePrefsButton";
 
 export const makeInitFn = (initFn: typeof CookieConsent.run, config: CookieConsentConfig) => {
@@ -19,6 +19,6 @@ export const makeInitFn = (initFn: typeof CookieConsent.run, config: CookieConse
      *    underneath the cookie banner's "manage preferences" dialog, which prevents
      *    the user from scrolling within the manage prefs dialog
      */
-    // injectReactRemoveScrollToggle();
+    injectReactRemoveScrollToggle();
   };
 };

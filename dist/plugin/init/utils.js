@@ -1,4 +1,4 @@
-// import { injectReactRemoveScrollToggle } from "../config/gui-options/scripts/forceDisableReactRemoveScroll.js";
+import { injectReactRemoveScrollToggle } from "../config/gui-options/scripts/forceDisableReactRemoveScroll.js";
 // import injectManageCookiePrefsButton from "../config/gui-options/scripts/injectManageCookiePrefsButton.js";
 export const makeInitFn = (initFn, config) => {
     return async () => {
@@ -12,6 +12,6 @@ export const makeInitFn = (initFn, config) => {
          *    underneath the cookie banner's "manage preferences" dialog, which prevents
          *    the user from scrolling within the manage prefs dialog
          */
-        // injectReactRemoveScrollToggle();
+        injectReactRemoveScrollToggle();
     };
 };
