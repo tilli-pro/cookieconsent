@@ -3,9 +3,10 @@ import "https://rawcdn.githack.com/tilli-pro/cookieconsent/0f888b603ba1077d94776
 import type * as _CookieConsent from "@tilli-pro/cookieconsent";
 import type { CookieConsentConfig } from "@tilli-pro/cookieconsent";
 
+import { cookieConsentTheme } from "./_utils";
 import _config from "./config";
 import { makeInitFn } from "./init/utils";
-import { cookieConsentTheme } from "./_utils";
+import styles from "./styles";
 
 declare module CookieConsent {
   const run: typeof _CookieConsent.run;
@@ -38,6 +39,15 @@ function loadCSS(url: string) {
   document.head.appendChild(link);
 }
 
+function loadNestedCSS(basePath: string, obj: any): void {
+  for (const [key, value] of Object.entries(obj))
+    if (typeof value === "string") {
+      const url = makeRemotePath(`${basePath}/${value}`);
+      loadCSS(url);
+    } else if (value && typeof value === "object")
+      loadNestedCSS(`${basePath}/${key}`, value);
+}
+
 function isEntryModule(): boolean {
   if (typeof document === "undefined") return false;
   try {
@@ -58,7 +68,8 @@ function isEntryModule(): boolean {
 
 function always() {
   loadCSS(CC_CSS_URL);
-  window.cookieConsentTheme = cookieConsentTheme; // used to fetch the correct classname to apply a specified theme
+  loadNestedCSS("/styles", styles);
+  window.cookieConsentTheme = cookieConsentTheme; // used to fetch the correct classname to apply a specified theme | THIS SHOULD BE INJECTED INTO THE <HTML> TAG!!! // TODO: auto-inject (?)
 }
 
 always();
@@ -70,7 +81,10 @@ export async function run(
 }
 
 if (isEntryModule()) {
-  console.debug({ config: _config }, "Initializing Cookie Consent (entry module)...");
+  console.debug(
+    { config: _config },
+    "Initializing Cookie Consent (entry module)...",
+  );
   const init = makeInitFn(run, _config);
   void init();
 }
