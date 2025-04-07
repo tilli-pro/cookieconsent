@@ -37,7 +37,7 @@ const getFilenameWithPathFromRemoteURL = (url: string) => {
 
 function loadCSS(url: string) {
   if (document.querySelector(`link[href*="${getFilenameWithPathFromRemoteURL(url)}"]`)) {
-    console.debug(`CSS already loaded: ${url}`);
+    // console.debug(`CSS already loaded: ${url}`);
     return; // prevent duplication
   }
 
@@ -54,10 +54,10 @@ function loadNestedPluginCSS(basePath: string, obj: any): void {
   for (const [key, value] of Object.entries(obj))
     if (typeof value === "string") {
       const url = makeRemotePluginURL(`${basePath}/${value}`);
-      console.debug(`Loading plugin CSS from ${url}`);
+      // console.debug(`Loading plugin CSS from ${url}`);
       loadCSS(url);
     } else if (value && typeof value === "object") {
-      console.debug(`Loading nested plugin CSS from ${basePath}/${key}`);
+      // console.debug(`Loading nested plugin CSS from ${basePath}/${key}`);
       loadNestedPluginCSS(`${basePath}/${key}`, value);
     }
 }
@@ -95,10 +95,10 @@ export async function run(
 }
 
 if (isEntryModule()) {
-  console.debug(
-    { config: _config },
-    "Initializing Cookie Consent (entry module)...",
-  );
+  // console.debug(
+  //   { config: _config },
+  //   "Initializing Cookie Consent (entry module)...",
+  // );
   const init = makeInitFn(run, _config);
   void init();
 }

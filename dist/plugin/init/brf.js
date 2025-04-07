@@ -54,6 +54,6 @@ const config = {
     ..._config,
     categories,
 };
-console.debug({ config }, "Initializing Cookie Consent (BRF)...");
+// console.debug({ config }, "Initializing Cookie Consent (BRF)...");
 const init = makeInitFn(run, config);
 void init();
