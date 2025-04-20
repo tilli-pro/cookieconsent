@@ -4,7 +4,7 @@ import { run } from "@tilli-pro/cookieconsent";
 import { COOKIE_CONSENT_ENABLED } from "../../_consts.js";
 import config from "../../config/index.js";
 import { makeInitFn } from "../../init/utils.js";
-export default function useCookieConsent() {
+export function useCookieConsent() {
     useEffect(() => {
         if (!COOKIE_CONSENT_ENABLED)
             return;

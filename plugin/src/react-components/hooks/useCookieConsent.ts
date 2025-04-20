@@ -8,7 +8,7 @@ import { COOKIE_CONSENT_ENABLED } from "../../_consts";
 import config from "../../config";
 import { makeInitFn } from "../../init/utils";
 
-export default function useCookieConsent() {
+export function useCookieConsent() {
   useEffect(() => {
     if (!COOKIE_CONSENT_ENABLED) return;
 

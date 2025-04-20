@@ -2,7 +2,7 @@ import type { CookieConsentConfig } from "@tilli-pro/cookieconsent";
 import type * as CookieConsent from "@tilli-pro/cookieconsent";
 
 import { injectReactRemoveScrollToggle } from "../config/gui-options/scripts/forceDisableReactRemoveScroll";
-import injectManageCookiePrefsButton from "../config/gui-options/scripts/injectManageCookiePrefsButton";
+import { injectManageCookiePrefsButton } from "../config/gui-options/scripts/injectManageCookiePrefsButton";
 
 export const makeInitFn = (
   initFn: typeof CookieConsent.run,

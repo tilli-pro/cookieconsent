@@ -1,5 +1,5 @@
 import { injectReactRemoveScrollToggle } from "../config/gui-options/scripts/forceDisableReactRemoveScroll.js";
-import injectManageCookiePrefsButton from "../config/gui-options/scripts/injectManageCookiePrefsButton.js";
+import { injectManageCookiePrefsButton } from "../config/gui-options/scripts/injectManageCookiePrefsButton.js";
 export const makeInitFn = (initFn, config) => {
     return async () => {
         /** inject the cookie-consent banner (pop-up) */

@@ -43,8 +43,8 @@ const inject = (): HTMLDivElement => {
 
   return container;
 };
-export default (): ReturnType<typeof inject> =>
-  ((container) => {
+export function injectManageCookiePrefsButton(): ReturnType<typeof inject> {
+  return ((container) => {
     /** observe the DOM (to handle the case where the injected manage prefs button somehow gets removed) */
     new MutationObserver(() => {
       const alreadyInjected: boolean =
@@ -60,3 +60,4 @@ export default (): ReturnType<typeof inject> =>
   })(
     (document.getElementById(containerId) as HTMLDivElement | null) ?? inject(),
   );
+}
