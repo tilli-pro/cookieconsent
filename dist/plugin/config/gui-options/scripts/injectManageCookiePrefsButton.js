@@ -30,7 +30,6 @@ const inject = () => {
     return container;
 };
 /** entry point */
-// export function injectManageCookiePrefsButton(): ReturnType<typeof inject> {
 export function injectManageCookiePrefsButton() {
     return ((container) => {
         /** observe the DOM (to handle the case where the injected manage prefs button somehow gets removed) */

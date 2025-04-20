@@ -1,6 +1,6 @@
 "use client";
 
-// import type * as _CookieConsent from "@tilli-pro/cookieconsent";
+import type * as _CookieConsent from "@tilli-pro/cookieconsent";
 
 import type { HTMLDivElementWithDragObserver } from "./cookiePrefsButtonDragObserver";
 import ManageCookiePrefsButton, {
@@ -49,8 +49,7 @@ const inject = (): HTMLDivElement => {
 };
 
 /** entry point */
-// export function injectManageCookiePrefsButton(): ReturnType<typeof inject> {
-  export function injectManageCookiePrefsButton() {
+export function injectManageCookiePrefsButton(): ReturnType<typeof inject> {
   return ((container) => {
     /** observe the DOM (to handle the case where the injected manage prefs button somehow gets removed) */
     new MutationObserver(() => {
@@ -68,7 +67,3 @@ const inject = (): HTMLDivElement => {
     (document.getElementById(containerId) as HTMLDivElement | null) ?? inject(),
   );
 }
-
-// export function injectManageCookiePrefsButton(): void {
-//   console.debug("injectManageCookiePrefsButton");
-// }
