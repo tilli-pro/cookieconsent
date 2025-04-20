@@ -20,6 +20,7 @@ const inject = () => {
     cookiePrefsButtonDragObserver.call(container);
     return container;
 };
+/** entry point */
 export function injectManageCookiePrefsButton() {
     return ((container) => {
         /** observe the DOM (to handle the case where the injected manage prefs button somehow gets removed) */
