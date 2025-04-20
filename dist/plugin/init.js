@@ -2,6 +2,7 @@ import "https://cdn.jsdelivr.net/gh/tilli-pro/cookieconsent@c6118a764ac2819b1cea
 import { cookieConsentTheme } from "./_utils.js";
 import _config from "./config/index.js";
 import styles from "./styles/index.js";
+import { initTheme } from "./init/utils.script.js";
 const GIT_SHA = "c6118a764ac2819b1cea965497fc45dc3dae9c08";
 const GIT_REPO = "tilli-pro/cookieconsent";
 const GIT_CDN_BASE_URL = "https://cdn.jsdelivr.net/gh";
@@ -45,6 +46,7 @@ async function always() {
     loadCSS(CC_CSS_URL);
     loadNestedPluginCSS("styles", styles); // TODO: make dynamic (only import dependent styles - aka if a certain `init` config is specified)
     window.cookieConsentTheme = cookieConsentTheme; // used to fetch the correct classname to apply a specified theme | THIS SHOULD BE INJECTED INTO THE <HTML> TAG!!! // TODO: auto-inject (?)
+    initTheme();
 }
 void always();
 export const run = async (config = _config) => await CookieConsent.run(config);

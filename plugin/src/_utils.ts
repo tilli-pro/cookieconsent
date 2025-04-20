@@ -4,6 +4,8 @@ import { COOKIE_CONSENT_TEST_SEARCH_PARAM_KEY_PREFIX } from "./_consts";
 
 type SupportedTenantThemes = Partial<Record<TenantRefId, Theme[]>>;
 const SUPPORTED_TENANT_THEMES = {
+  "con-edison": ["light"],
+  oru: ["light"],
   freeman: ["light"],
   frontier: ["light"],
 } satisfies SupportedTenantThemes;
@@ -12,7 +14,7 @@ type SupportedTenant = keyof typeof SUPPORTED_TENANT_THEMES;
 interface CookieConsentThemeParams {
   theme?: Theme;
   defaultTo?: Exclude<Theme, "system">;
-  tenantRefId?: string;
+  tenantRefId?: TenantRefId;
   url?: URL | null;
 }
 
@@ -36,8 +38,8 @@ export const cookieConsentTheme = ({
     ) as {
       lang?: Language;
       locale?: Locale;
-      tenant?: TenantRefId | string; // we cannot guarantee the exact value
-      product?: "tilliX" | string; // we cannot guarantee the exact value
+      tenant?: TenantRefId;
+      product?: "tilliX" | "nudge" | "tilli-pay"; // TODO: add type
       theme?: Exclude<Theme, "system">;
     };
 

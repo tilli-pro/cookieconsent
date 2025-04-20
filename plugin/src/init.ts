@@ -6,6 +6,7 @@ import type { CookieConsentConfig } from "@tilli-pro/cookieconsent";
 import { cookieConsentTheme } from "./_utils";
 import _config from "./config";
 import styles from "./styles";
+import { initTheme } from "./init/utils.script";
 
 declare module CookieConsent {
   const run: typeof _CookieConsent.run;
@@ -70,6 +71,7 @@ async function always() {
   loadCSS(CC_CSS_URL);
   loadNestedPluginCSS("styles", styles); // TODO: make dynamic (only import dependent styles - aka if a certain `init` config is specified)
   window.cookieConsentTheme = cookieConsentTheme; // used to fetch the correct classname to apply a specified theme | THIS SHOULD BE INJECTED INTO THE <HTML> TAG!!! // TODO: auto-inject (?)
+  initTheme();
 }
 
 void always();
