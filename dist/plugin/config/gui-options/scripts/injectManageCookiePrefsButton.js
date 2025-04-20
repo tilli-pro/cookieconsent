@@ -1,19 +1,10 @@
 "use client";
 import ManageCookiePrefsButton, { containerId, } from "../html-components/ManageCookiePrefsButton.js";
 import cookiePrefsButtonDragObserver, { ontouchend, ontouchstart, } from "./cookiePrefsButtonDragObserver.js";
-// declare const CookieConsent:
-//   | {
-//       showPreferences?: typeof _CookieConsent.showPreferences;
-//     }
-//   | undefined;
-// export const showPreferences =
-//   typeof CookieConsent !== "undefined" &&
-//   typeof CookieConsent.showPreferences === "function"
-//     ? CookieConsent.showPreferences
-//     : (await import("@tilli-pro/cookieconsent")).showPreferences;
-const showPreferences = () => {
-    console.debug("showPreferences [injectManageCookiePrefsButton]");
-};
+export const showPreferences = typeof CookieConsent !== "undefined" &&
+    typeof CookieConsent.showPreferences === "function"
+    ? CookieConsent.showPreferences
+    : (await import("@tilli-pro/cookieconsent")).showPreferences;
 /** injects the floating cookie consent "manage preferences" icon button into the DOM */
 const inject = () => {
     const container = document.body.appendChild(Object.assign(document.createElement("div"), {
