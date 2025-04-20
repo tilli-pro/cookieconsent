@@ -143,9 +143,9 @@
 .cc--tenant\:oru-light button.pm__btn--secondary,
 .cc--tenant\:oru-dark button.cm__btn--secondary,
 .cc--tenant\:oru-dark button.pm__btn--secondary {
-  color: #0078cf !important;
+  color: #004557 !important;
   background-color: #fff !important;
-  border-color: #0078cf !important;
+  border-color: #004557 !important;
   border-width: 2.5px !important;
   box-sizing: border-box !important;
 }
