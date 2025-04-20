@@ -4,6 +4,7 @@ import "@tilli-pro/cookieconsent/dist/cookieconsent.css";
 // TODO: make theme imports below dynamic
 import "../styles/tilli-website.css";
 import "../styles/tilli-pay.css";
+import "../styles/nudge-website.css";
 import "../styles/nudge.css";
 import "../styles/tenants/freeman.css";
 import "../styles/tenants/frontier.css";
