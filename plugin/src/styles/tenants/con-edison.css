@@ -3,16 +3,16 @@
   * > Replace: :$2 !important;
   */
 
-/** `tenant:freeman` color-scheme **/
-.cc--tenant\:freeman-light {
+/** `tenant:con-edison` color-scheme **/
+.cc--tenant\:con-edison-light {
   --cc-bg: #ffffff !important;
   --cc-primary-color: #2c2f31 !important;
   --cc-secondary-color: #5e6266 !important;
 
-  --cc-btn-primary-bg: #00bdf6 !important;
+  --cc-btn-primary-bg: #0078cf !important;
   --cc-btn-primary-color: #ffffff !important;
   --cc-btn-primary-border-color: var(--cc-btn-primary-bg) !important;
-  --cc-btn-primary-hover-bg: #5ed6ff !important;
+  --cc-btn-primary-hover-bg: #0078cf !important;
   --cc-btn-primary-hover-color: #ffffff !important;
   --cc-btn-primary-hover-border-color: var(
     --cc-btn-primary-hover-bg
@@ -57,16 +57,16 @@
   --cc-footer-border-color: #e4eaed !important;
 }
 
-.cc--tenant\:freeman-dark {
+.cc--tenant\:con-edison-dark {
   --cc-bg: #000 !important;
   --cc-primary-color: #eff4f6 !important;
   --cc-secondary-color: #b1bdc3 !important;
 
-  --cc-btn-primary-bg: #00bdf6 !important;
-  --cc-btn-primary-color: #000 !important;
+  --cc-btn-primary-bg: #0078cf !important;
+  --cc-btn-primary-color: #ffffff !important;
   --cc-btn-primary-border-color: var(--cc-btn-primary-bg) !important;
-  --cc-btn-primary-hover-bg: #5ed6ff !important;
-  --cc-btn-primary-hover-color: #000 !important;
+  --cc-btn-primary-hover-bg: #0078cf !important;
+  --cc-btn-primary-hover-color: #ffffff !important;
   --cc-btn-primary-hover-border-color: var(
     --cc-btn-primary-hover-bg
   ) !important;
@@ -110,8 +110,17 @@
   --cc-footer-border-color: #212529 !important;
 }
 
+.cc--tenant\:con-edison-light button.cm__btn,
+.cc--tenant\:con-edison-light button.pm__btn,
+.cc--tenant\:con-edison-dark button.cm__btn,
+.cc--tenant\:con-edison-dark button.pm__btn {
+  border-radius: 9999px !important;
+  font-weight: 800 !important;
+  letter-spacing: normal !important;
+}
+
 /** font */
-.cc--tenant\:freeman-light #cc-main,
-.cc--tenant\:freeman-dark #cc-main {
-  font-family: var(--font-inter, var(--cc-font-family)) !important;
+.cc--tenant\:con-edison-light #cc-main,
+.cc--tenant\:con-edison-dark #cc-main {
+  font-family: var(--font-open-sans, var(--cc-font-family)) !important;
 }
