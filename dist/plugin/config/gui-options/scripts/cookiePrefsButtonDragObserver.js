@@ -1,6 +1,9 @@
 "use client";
 import { buttonId } from "../html-components/ManageCookiePrefsButton.js";
-import { showPreferences } from "./injectManageCookiePrefsButton.js";
+// import { showPreferences } from "./injectManageCookiePrefsButton.js";
+const showPreferences = () => {
+    console.debug("showPreferences");
+};
 /**
  * attach a MutationObserver the **first time** the user hovers over–
  * enabling a limited "drag up" functionality for the floating button.

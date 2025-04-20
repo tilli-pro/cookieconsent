@@ -3,7 +3,11 @@
 import type * as _CookieConsent from "@tilli-pro/cookieconsent";
 
 import { buttonId } from "../html-components/ManageCookiePrefsButton";
-import { showPreferences } from "./injectManageCookiePrefsButton";
+// import { showPreferences } from "./injectManageCookiePrefsButton";
+
+const showPreferences = () => {
+  console.debug("showPreferences");
+};
 
 /**
  * attach a MutationObserver the **first time** the user hovers over–
