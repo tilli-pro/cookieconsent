@@ -43,6 +43,8 @@ const inject = (): HTMLDivElement => {
 
   return container;
 };
+
+/** entry point */
 export function injectManageCookiePrefsButton(): ReturnType<typeof inject> {
   return ((container) => {
     /** observe the DOM (to handle the case where the injected manage prefs button somehow gets removed) */
