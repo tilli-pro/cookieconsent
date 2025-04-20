@@ -1,0 +1,120 @@
+/** NOTE: to auto-add `!important` suffixes, simply use this RegEx w/ Find + Replace:
+  * > Find: (:)(?![^;]*!important)([^;]+)(;)(?!.*\^)
+  * > Replace: :$2 !important;
+  */
+
+/* TILLI_BLUE_HEX: #335EF6 */
+/* TILLI_LIGHT_BLUE_HEX: #02B1FF */
+
+/** `tilli-website` color-scheme **/
+.cc--tilli-website-light {
+  --cc-bg: #ffffff !important;
+  --cc-primary-color: #2c2f31 !important;
+  --cc-secondary-color: #5e6266 !important;
+
+  --cc-btn-primary-bg: #02B1FF !important;
+  --cc-btn-primary-color: #ffffff !important;
+  --cc-btn-primary-border-color: var(--cc-btn-primary-bg) !important;
+  --cc-btn-primary-hover-bg: #25b8fa !important;
+  --cc-btn-primary-hover-color: #ffffff !important;
+  --cc-btn-primary-hover-border-color: var(
+    --cc-btn-primary-hover-bg
+  ) !important;
+
+  --cc-btn-secondary-bg: #e2e8f0 !important;
+  --cc-btn-secondary-color: #334155 !important;
+  --cc-btn-secondary-border-color: var(--cc-btn-secondary-bg) !important;
+  --cc-btn-secondary-hover-bg: #f1f5f9 !important;
+  --cc-btn-secondary-hover-color: #000000 !important;
+  --cc-btn-secondary-hover-border-color: #d4dae0 !important;
+
+  --cc-separator-border-color: #f3f8fc !important;
+
+  --cc-toggle-on-bg: var(--cc-btn-primary-bg) !important;
+  --cc-toggle-off-bg: #667481 !important;
+  --cc-toggle-on-knob-bg: #ffffff !important;
+  --cc-toggle-off-knob-bg: var(--cc-toggle-on-knob-bg) !important;
+
+  --cc-toggle-enabled-icon-color: var(--cc-bg) !important; /* yes (v tick) */
+  --cc-toggle-disabled-icon-color: var(--cc-bg) !important; /* no (x tick) */
+
+  --cc-toggle-readonly-bg: #d5dee2 !important;
+  --cc-toggle-readonly-knob-bg: #fff !important;
+  --cc-toggle-readonly-knob-icon-color: var(--cc-toggle-readonly-bg) !important;
+
+  --cc-section-category-border: var(--cc-cookie-category-block-bg) !important;
+
+  --cc-cookie-category-block-bg: #f3f8fc !important;
+  --cc-cookie-category-block-border: #f3f8fc !important;
+  --cc-cookie-category-block-hover-bg: #f0f4f7 !important;
+  --cc-cookie-category-block-hover-border: #f0f4f7 !important;
+  --cc-cookie-category-expanded-block-bg: transparent !important;
+  --cc-cookie-category-expanded-block-hover-bg: #dee4e9 !important;
+
+  --cc-overlay-bg: rgba(0, 0, 0, 0.65) !important;
+  --cc-webkit-scrollbar-bg: var(--cc-section-category-border) !important;
+  --cc-webkit-scrollbar-hover-bg: var(--cc-btn-primary-hover-bg) !important;
+
+  --cc-footer-bg: #f3f8fc !important;
+  --cc-footer-color: var(--cc-secondary-color) !important;
+  --cc-footer-border-color: #e4eaed !important;
+}
+
+.cc--tilli-website-dark {
+  --cc-bg: #000 !important;
+  --cc-primary-color: #eff4f6 !important;
+  --cc-secondary-color: #b1bdc3 !important;
+
+  --cc-btn-primary-bg: #02B1FF !important;
+  --cc-btn-primary-color: #000 !important;
+  --cc-btn-primary-border-color: var(--cc-btn-primary-bg) !important;
+  --cc-btn-primary-hover-bg: #25b8fa !important;
+  --cc-btn-primary-hover-color: #000 !important;
+  --cc-btn-primary-hover-border-color: var(
+    --cc-btn-primary-hover-bg
+  ) !important;
+
+  --cc-btn-secondary-bg: hsla(0,0%,100%,.039) !important;
+  --cc-btn-secondary-color: #fff !important;
+  --cc-btn-secondary-border-color: var(--cc-btn-secondary-bg) !important;
+  --cc-btn-secondary-hover-bg: #252729 !important;
+  --cc-btn-secondary-hover-color: #fff !important;
+  --cc-btn-secondary-hover-border-color: #252729 !important;
+
+  --cc-separator-border-color: #252729 !important;
+
+  --cc-toggle-on-bg: var(--cc-btn-primary-bg) !important;
+  --cc-toggle-off-bg: #667481 !important;
+  --cc-toggle-on-knob-bg: var(--cc-bg) !important;
+  --cc-toggle-off-knob-bg: var(--cc-toggle-on-knob-bg) !important;
+
+  --cc-toggle-enabled-icon-color: var(--cc-bg) !important; /* yes (v tick) */
+  --cc-toggle-disabled-icon-color: var(--cc-bg) !important; /* no (x tick) */
+
+  --cc-toggle-readonly-bg: #2f3132 !important;
+  --cc-toggle-readonly-knob-bg: var(--cc-cookie-category-block-bg) !important;
+  --cc-toggle-readonly-knob-icon-color: var(--cc-toggle-readonly-bg) !important;
+
+  --cc-section-category-border: var(--cc-cookie-category-block-bg) !important;
+
+  --cc-cookie-category-block-bg: #101111 !important;
+  --cc-cookie-category-block-border: #1d1e1f !important;
+  --cc-cookie-category-block-hover-bg: #151516 !important;
+  --cc-cookie-category-block-hover-border: #1d1e1f !important;
+  --cc-cookie-category-expanded-block-bg: #101111 !important;
+  --cc-cookie-category-expanded-block-hover-bg: #1d1e1f !important;
+
+  --cc-overlay-bg: rgba(0,0,0,.9) !important;
+  --cc-webkit-scrollbar-bg: var(--cc-section-category-border) !important;
+  --cc-webkit-scrollbar-hover-bg: var(--cc-btn-primary-hover-bg) !important;
+
+  --cc-footer-bg: #000 !important;
+  --cc-footer-color: var(--cc-secondary-color) !important;
+  --cc-footer-border-color: #212529 !important;
+}
+
+/** font */
+.cc--tilli-website-light #cc-main,
+.cc--tilli-website-dark #cc-main {
+  font-family: var(--font-inter, var(--cc-font-family)) !important;
+}
