@@ -52,16 +52,16 @@ const inject = (): HTMLDivElement => {
 // export function injectManageCookiePrefsButton(): ReturnType<typeof inject> {
   export function injectManageCookiePrefsButton() {
   return ((container) => {
-    // /** observe the DOM (to handle the case where the injected manage prefs button somehow gets removed) */
-    // new MutationObserver(() => {
-    //   const alreadyInjected: boolean =
-    //     !!document.getElementById(containerId) ||
-    //     document.body.contains(container);
-    //   if (alreadyInjected) return;
+    /** observe the DOM (to handle the case where the injected manage prefs button somehow gets removed) */
+    new MutationObserver(() => {
+      const alreadyInjected: boolean =
+        !!document.getElementById(containerId) ||
+        document.body.contains(container);
+      if (alreadyInjected) return;
 
-    //   /** if the container is no longer in <body>, re-inject */
-    //   container = inject();
-    // }).observe(document.body, { childList: true, subtree: true });
+      /** if the container is no longer in <body>, re-inject */
+      container = inject();
+    }).observe(document.body, { childList: true, subtree: true });
 
     return container;
   })(
