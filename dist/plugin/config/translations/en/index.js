@@ -82,7 +82,8 @@ export default {
                 linkedCategory: "marketing",
             },
             {
-                title: "More information",
+                // title: "More information",
+                title: "",
                 description: 'For any queries in relation to our policy on cookies and your choices, please <a href="mailto:privacy@tilli.pro">contact us</a>.',
             },
         ],
