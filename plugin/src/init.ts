@@ -1,4 +1,4 @@
-import "https://cdn.jsdelivr.net/gh/tilli-pro/cookieconsent@3bfaa9a2560256775d7d04a8c00d12b9344f79aa/dist/cookieconsent.umd.js";
+import "https://cdn.jsdelivr.net/gh/tilli-pro/cookieconsent@45c8f29c777f33aa0b2c7fa96d3ba2f9ad44ed75/dist/cookieconsent.umd.js";
 
 import type * as _CookieConsent from "@tilli-pro/cookieconsent";
 import type { CookieConsentConfig } from "@tilli-pro/cookieconsent";
@@ -17,7 +17,7 @@ declare global {
   }
 }
 
-const GIT_SHA = "3bfaa9a2560256775d7d04a8c00d12b9344f79aa";
+const GIT_SHA = "45c8f29c777f33aa0b2c7fa96d3ba2f9ad44ed75";
 const GIT_REPO = "tilli-pro/cookieconsent";
 const GIT_CDN_BASE_URL = "https://cdn.jsdelivr.net/gh";
 const GIT_CDN_URL = `${GIT_CDN_BASE_URL}/${GIT_REPO}@${GIT_SHA}`;
