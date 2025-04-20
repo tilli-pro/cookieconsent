@@ -60,6 +60,9 @@ export default (lang = "en") => `
         /* ensure always-interactable + visible */
         pointer-events: auto;
         visibility: visible !important;
+
+        /* prevent default <button> text color override */
+        color: inherit;
       }
 
       .dark #${buttonId} {

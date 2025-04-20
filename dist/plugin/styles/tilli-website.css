@@ -3,16 +3,19 @@
   * > Replace: :$2 !important;
   */
 
-/** `tenant:freeman` color-scheme **/
-.cc--tenant\:freeman-light {
+/* TILLI_BLUE_HEX: #335EF6 */
+/* TILLI_LIGHT_BLUE_HEX: #02B1FF */
+
+/** `tilli-website` color-scheme **/
+.cc--tilli-website-light {
   --cc-bg: #ffffff !important;
   --cc-primary-color: #2c2f31 !important;
   --cc-secondary-color: #5e6266 !important;
 
-  --cc-btn-primary-bg: #00bdf6 !important;
+  --cc-btn-primary-bg: #02B1FF !important;
   --cc-btn-primary-color: #ffffff !important;
   --cc-btn-primary-border-color: var(--cc-btn-primary-bg) !important;
-  --cc-btn-primary-hover-bg: #5ed6ff !important;
+  --cc-btn-primary-hover-bg: #25b8fa !important;
   --cc-btn-primary-hover-color: #ffffff !important;
   --cc-btn-primary-hover-border-color: var(
     --cc-btn-primary-hover-bg
@@ -57,15 +60,15 @@
   --cc-footer-border-color: #e4eaed !important;
 }
 
-.cc--tenant\:freeman-dark {
+.cc--tilli-website-dark {
   --cc-bg: #000 !important;
   --cc-primary-color: #eff4f6 !important;
   --cc-secondary-color: #b1bdc3 !important;
 
-  --cc-btn-primary-bg: #00bdf6 !important;
+  --cc-btn-primary-bg: #02B1FF !important;
   --cc-btn-primary-color: #000 !important;
   --cc-btn-primary-border-color: var(--cc-btn-primary-bg) !important;
-  --cc-btn-primary-hover-bg: #5ed6ff !important;
+  --cc-btn-primary-hover-bg: #25b8fa !important;
   --cc-btn-primary-hover-color: #000 !important;
   --cc-btn-primary-hover-border-color: var(
     --cc-btn-primary-hover-bg
@@ -111,7 +114,7 @@
 }
 
 /** font */
-.cc--tenant\:freeman-light #cc-main,
-.cc--tenant\:freeman-dark #cc-main {
+.cc--tilli-website-light #cc-main,
+.cc--tilli-website-dark #cc-main {
   font-family: var(--font-inter, var(--cc-font-family)) !important;
 }

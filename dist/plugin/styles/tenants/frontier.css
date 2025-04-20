@@ -57,8 +57,63 @@
   --cc-footer-border-color: #e4eaed !important;
 }
 
+.cc--tenant\:frontier-dark {
+  --cc-bg: #000 !important;
+  --cc-primary-color: #eff4f6 !important;
+  --cc-secondary-color: #b1bdc3 !important;
+
+  --cc-btn-primary-bg: #ff0037 !important;
+  --cc-btn-primary-color: #ffffff !important;
+  --cc-btn-primary-border-color: var(--cc-btn-primary-bg) !important;
+  --cc-btn-primary-hover-bg: #141928 !important;
+  --cc-btn-primary-hover-color: #ffffff !important;
+  --cc-btn-primary-hover-border-color: var(
+    --cc-btn-primary-hover-bg
+  ) !important;
+
+  --cc-btn-secondary-bg: hsla(0,0%,100%,.039) !important;
+  --cc-btn-secondary-color: #fff !important;
+  --cc-btn-secondary-border-color: var(--cc-btn-secondary-bg) !important;
+  --cc-btn-secondary-hover-bg: #252729 !important;
+  --cc-btn-secondary-hover-color: #fff !important;
+  --cc-btn-secondary-hover-border-color: #252729 !important;
+
+  --cc-separator-border-color: #252729 !important;
+
+  --cc-toggle-on-bg: var(--cc-btn-primary-bg) !important;
+  --cc-toggle-off-bg: #667481 !important;
+  --cc-toggle-on-knob-bg: var(--cc-bg) !important;
+  --cc-toggle-off-knob-bg: var(--cc-toggle-on-knob-bg) !important;
+
+  --cc-toggle-enabled-icon-color: var(--cc-bg) !important; /* yes (v tick) */
+  --cc-toggle-disabled-icon-color: var(--cc-bg) !important; /* no (x tick) */
+
+  --cc-toggle-readonly-bg: #2f3132 !important;
+  --cc-toggle-readonly-knob-bg: var(--cc-cookie-category-block-bg) !important;
+  --cc-toggle-readonly-knob-icon-color: var(--cc-toggle-readonly-bg) !important;
+
+  --cc-section-category-border: var(--cc-cookie-category-block-bg) !important;
+
+  --cc-cookie-category-block-bg: #101111 !important;
+  --cc-cookie-category-block-border: #1d1e1f !important;
+  --cc-cookie-category-block-hover-bg: #151516 !important;
+  --cc-cookie-category-block-hover-border: #1d1e1f !important;
+  --cc-cookie-category-expanded-block-bg: #101111 !important;
+  --cc-cookie-category-expanded-block-hover-bg: #1d1e1f !important;
+
+  --cc-overlay-bg: rgba(0,0,0,.9) !important;
+  --cc-webkit-scrollbar-bg: var(--cc-section-category-border) !important;
+  --cc-webkit-scrollbar-hover-bg: var(--cc-btn-primary-hover-bg) !important;
+
+  --cc-footer-bg: #000 !important;
+  --cc-footer-color: var(--cc-secondary-color) !important;
+  --cc-footer-border-color: #212529 !important;
+}
+
 .cc--tenant\:frontier-light button.cm__btn,
-.cc--tenant\:frontier-light button.pm__btn {
+.cc--tenant\:frontier-light button.pm__btn,
+.cc--tenant\:frontier-dark button.cm__btn,
+.cc--tenant\:frontier-dark button.pm__btn {
   border-radius: 9999px !important;
   text-transform: uppercase !important;
   font-weight: 700 !important;
@@ -66,6 +121,7 @@
 }
 
 /** font */
-.cc--tenant\:frontier-light #cc-main {
+.cc--tenant\:frontier-light #cc-main,
+.cc--tenant\:frontier-dark #cc-main {
   font-family: var(--font-frontier-pp-object-sans, var(--cc-font-family)) !important;
 }
