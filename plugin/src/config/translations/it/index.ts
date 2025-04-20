@@ -101,7 +101,8 @@ export default {
       },
       
       {
-        title: "Ulteriori informazioni",
+        // title: "Ulteriori informazioni",
+        title: "",
         description:
           'Per qualsiasi domanda relativa alla nostra politica sui cookie e alle tue scelte, ti preghiamo di <a href="mailto:privacy@tilli.pro">contattarci</a>.',
       },
