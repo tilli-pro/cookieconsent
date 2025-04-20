@@ -7,6 +7,8 @@ import {
   stripInvalidLinkedCategoriesFromTranslations,
 } from "./utils";
 
+// TODO: migrate from monay.com to tillipay.com
+
 const categories: CookieConsentConfig["categories"] = {
   necessary: {
     enabled: true, // "necessary" category is always enabled.
@@ -20,6 +22,29 @@ const categories: CookieConsentConfig["categories"] = {
           },
         ],
       },
+    },
+  },
+  functional: {
+    services: {
+      "Hubspot": {
+        label: "Hubspot",
+        cookies: [
+          {
+            name: /^(messagesUtk)/, // Hubspot (chat user identity)
+            domain: ".monay.com",
+          },
+        ],
+      },
+    },
+    autoClear: {
+      // TODO: DRY this with the services above
+      cookies: [
+        /** Hubspot */
+        {
+          name: /^(messagesUtk)/, // Hubspot (chat user identity)
+          domain: ".monay.com",
+        },
+      ],
     },
   },
   analytics: {
@@ -62,23 +87,6 @@ const categories: CookieConsentConfig["categories"] = {
   },
   marketing: {
     services: {
-      "Google Tag Manager": {
-        label: "Google Tag Manager",
-        cookies: [
-          {
-            name: /^(_gtm_)/, // Google Tag Manager
-            domain: "tilli.pro",
-          },
-          {
-            name: /^(_gat)/, // Google Tag Manager (analytics)
-            domain: "tilli.pro",
-          },
-          {
-            name: /^(_gid)/, // Google Tag Manager (session ID)
-            domain: "tilli.pro",
-          },
-        ],
-      },
       "Hubspot": {
         label: "Hubspot",
         cookies: [
@@ -142,20 +150,6 @@ const categories: CookieConsentConfig["categories"] = {
     autoClear: {
       // TODO: DRY this with the services above
       cookies: [
-        /** Google Tag Manager */
-        {
-          name: /^(_gtm_)/, // Google Tag Manager
-          domain: "tilli.pro",
-        },
-        {
-          name: /^(_gat)/, // Google Tag Manager (analytics)
-          domain: "tilli.pro",
-        },
-        {
-          name: /^(_gid)/, // Google Tag Manager (session ID)
-          domain: "tilli.pro",
-        },
-
         /** Hubspot */
         {
           name: /^(__hs)/, // Hubspot (Session Tracking)
