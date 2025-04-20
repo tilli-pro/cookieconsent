@@ -1,5 +1,6 @@
 "use client";
 
+import { ConfigId } from "../init/_configs";
 import { useCookieConsent } from "./hooks/useCookieConsent";
 
 import "@tilli-pro/cookieconsent/dist/cookieconsent.css";
@@ -12,8 +13,14 @@ import "../styles/tenants/frontier.css";
 import "../styles/tenants/con-edison.css";
 import "../styles/tenants/oru.css";
 
-export default function CookieConsentInit() {
-  useCookieConsent();
+interface CookieConsentInitProps {
+  configId: ConfigId;
+}
+
+export default function CookieConsentInit({
+  configId,
+}: Readonly<CookieConsentInitProps>) {
+  useCookieConsent(configId);
 
   return null;
 }

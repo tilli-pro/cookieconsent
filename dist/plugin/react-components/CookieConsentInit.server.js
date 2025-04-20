@@ -4,6 +4,6 @@ import { COOKIE_CONSENT_ENABLED } from "../_consts.js";
 import CookieConsentInitClient from "./CookieConsentInit.client.js";
 /** we use a server component to handle dynamic injection of the script all together
  * > basically, there's no need to inject the client-side cookie-consent script if it's not in scope */
-export default function CookieConsentInit() {
-    return COOKIE_CONSENT_ENABLED ? _jsx(CookieConsentInitClient, {}) : null;
+export default function CookieConsentInit({ configId, }) {
+    return COOKIE_CONSENT_ENABLED ? (_jsx(CookieConsentInitClient, { configId })) : null;
 }
