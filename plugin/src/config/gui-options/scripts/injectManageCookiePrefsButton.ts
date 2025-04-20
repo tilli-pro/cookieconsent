@@ -17,11 +17,16 @@ declare const CookieConsent:
     }
   | undefined;
 
+const _showPreferences = () => {
+  console.debug("showPreferences [injectManageCookiePrefsButton]");
+};
+
 export const showPreferences =
   typeof CookieConsent !== "undefined" &&
   typeof CookieConsent.showPreferences === "function"
     ? CookieConsent.showPreferences
-    : (await import("@tilli-pro/cookieconsent")).showPreferences;
+    : _showPreferences;
+    // (await import("@tilli-pro/cookieconsent")).showPreferences;
 
 /** injects the floating cookie consent "manage preferences" icon button into the DOM */
 const inject = (): HTMLDivElement => {
