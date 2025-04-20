@@ -11,16 +11,6 @@ const categories: CookieConsentConfig["categories"] = {
   necessary: {
     enabled: true, // "necessary" category is always enabled.
     readOnly: true,
-    services: {
-      "Authentication": {
-        label: "Authentication",
-        cookies: [
-          {
-            name: /^(refreshToken)/, // refresh token for authentication purposes only
-          },
-        ],
-      },
-    },
   },
 };
 
