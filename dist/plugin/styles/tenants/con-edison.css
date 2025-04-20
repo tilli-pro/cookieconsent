@@ -5,9 +5,12 @@
 
 /** `tenant:con-edison` color-scheme **/
 .cc--tenant\:con-edison-light {
+  --cc-modal-border-radius: 0px !important;
+  --cc-btn-border-radius: 0px !important;
+
   --cc-bg: #ffffff !important;
-  --cc-primary-color: #2c2f31 !important;
-  --cc-secondary-color: #5e6266 !important;
+  --cc-primary-color: #2A2A2A !important;
+  --cc-secondary-color: #2A2A2A !important;
 
   --cc-btn-primary-bg: #0078cf !important;
   --cc-btn-primary-color: #ffffff !important;
@@ -25,7 +28,7 @@
   --cc-btn-secondary-hover-color: #000000 !important;
   --cc-btn-secondary-hover-border-color: #d4dae0 !important;
 
-  --cc-separator-border-color: #f3f8fc !important;
+  --cc-separator-border-color: transparent !important;
 
   --cc-toggle-on-bg: var(--cc-btn-primary-bg) !important;
   --cc-toggle-off-bg: #667481 !important;
@@ -41,10 +44,10 @@
 
   --cc-section-category-border: var(--cc-cookie-category-block-bg) !important;
 
-  --cc-cookie-category-block-bg: #f3f8fc !important;
-  --cc-cookie-category-block-border: #f3f8fc !important;
-  --cc-cookie-category-block-hover-bg: #f0f4f7 !important;
-  --cc-cookie-category-block-hover-border: #f0f4f7 !important;
+  --cc-cookie-category-block-bg: transparent !important;
+  --cc-cookie-category-block-border: #636363 !important;
+  --cc-cookie-category-block-hover-bg: #e6e6e6 !important;
+  --cc-cookie-category-block-hover-border: #636363 !important;
   --cc-cookie-category-expanded-block-bg: transparent !important;
   --cc-cookie-category-expanded-block-hover-bg: #dee4e9 !important;
 
@@ -52,12 +55,15 @@
   --cc-webkit-scrollbar-bg: var(--cc-section-category-border) !important;
   --cc-webkit-scrollbar-hover-bg: var(--cc-btn-primary-hover-bg) !important;
 
-  --cc-footer-bg: #f3f8fc !important;
+  --cc-footer-bg: #e6e6e6 !important;
   --cc-footer-color: var(--cc-secondary-color) !important;
-  --cc-footer-border-color: #e4eaed !important;
+  --cc-footer-border-color: transparent !important;
 }
 
 .cc--tenant\:con-edison-dark {
+  --cc-modal-border-radius: 0px !important;
+  --cc-btn-border-radius: 0px !important;
+  
   color-scheme: dark;
   --cc-bg: #000 !important;
   --cc-primary-color: #eff4f6 !important;
@@ -109,6 +115,17 @@
   --cc-footer-bg: #000 !important;
   --cc-footer-color: var(--cc-secondary-color) !important;
   --cc-footer-border-color: #212529 !important;
+}
+
+.cc--tenant\:con-edison-light div.cm,
+.cc--tenant\:con-edison-dark div.cm {
+  box-shadow: none !important;
+  border: 1px solid #636363 !important;
+}
+
+.cc--tenant\:con-edison-light div.pm__section--toggle,
+.cc--tenant\:con-edison-dark div.pm__section--toggle {
+  margin-bottom: 8px !important;
 }
 
 .cc--tenant\:con-edison-light div.cm__btn-group,
