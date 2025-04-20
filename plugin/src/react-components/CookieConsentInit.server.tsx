@@ -5,15 +5,15 @@ import { COOKIE_CONSENT_ENABLED } from "../_consts";
 import CookieConsentInitClient from "./CookieConsentInit.client";
 
 interface CookieConsentInitProps {
-  configId: ConfigId;
+  config: ConfigId;
 }
 
 /** we use a server component to handle dynamic injection of the script all together
  * > basically, there's no need to inject the client-side cookie-consent script if it's not in scope */
 export default function CookieConsentInit({
-  configId,
+  config,
 }: Readonly<CookieConsentInitProps>) {
   return COOKIE_CONSENT_ENABLED ? (
-    <CookieConsentInitClient {...{ configId }} />
+    <CookieConsentInitClient {...{ config }} />
   ) : null;
 }

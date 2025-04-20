@@ -14,13 +14,13 @@ import "../styles/tenants/con-edison.css";
 import "../styles/tenants/oru.css";
 
 interface CookieConsentInitProps {
-  configId: ConfigId;
+  config: ConfigId;
 }
 
 export default function CookieConsentInit({
-  configId,
+  config,
 }: Readonly<CookieConsentInitProps>) {
-  useCookieConsent(configId);
+  useCookieConsent(config);
 
   return null;
 }

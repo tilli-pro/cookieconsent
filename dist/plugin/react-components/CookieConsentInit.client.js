@@ -9,7 +9,7 @@ import "../styles/tenants/freeman.css";
 import "../styles/tenants/frontier.css";
 import "../styles/tenants/con-edison.css";
 import "../styles/tenants/oru.css";
-export default function CookieConsentInit({ configId, }) {
-    useCookieConsent(configId);
+export default function CookieConsentInit({ config, }) {
+    useCookieConsent(config);
     return null;
 }
