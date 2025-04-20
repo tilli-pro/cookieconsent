@@ -5,5 +5,7 @@ export default {
   tenants: {
     freeman: "freeman.css",
     frontier: "frontier.css",
+    "con-edison": "con-edison.css",
+    oru: "oru.css",
   },
 } as const;
