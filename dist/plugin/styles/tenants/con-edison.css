@@ -111,6 +111,22 @@
   --cc-footer-border-color: #212529 !important;
 }
 
+.cc--tenant\:con-edison-light div.cm__btn-group,
+.cc--tenant\:con-edison-dark div.cm__btn-group,
+.cc--tenant\:con-edison-light div.cm__btns,
+.cc--tenant\:con-edison-dark div.cm__btns {
+  & > *:not(:first-child) {
+    margin-top: 8px !important;
+  }
+}
+
+.cc--tenant\:con-edison-light div.pm__btn-group,
+.cc--tenant\:con-edison-dark div.pm__btn-group {
+  & > *:not(:first-child) {
+    margin-left: 8px !important;
+  }
+}
+
 .cc--tenant\:con-edison-light button.cm__btn,
 .cc--tenant\:con-edison-light button.pm__btn,
 .cc--tenant\:con-edison-dark button.cm__btn,
@@ -118,6 +134,20 @@
   border-radius: 9999px !important;
   font-weight: 800 !important;
   letter-spacing: normal !important;
+  padding: 10px 24px !important; /* 10 px top/bottom, 24 px left/right */
+  height: 48px !important; /* 48 px height (3rem) */
+  font-size: 16px !important;
+}
+
+.cc--tenant\:con-edison-light button.cm__btn--secondary,
+.cc--tenant\:con-edison-light button.pm__btn--secondary,
+.cc--tenant\:con-edison-dark button.cm__btn--secondary,
+.cc--tenant\:con-edison-dark button.pm__btn--secondary {
+  color: #0078cf !important;
+  background-color: #fff !important;
+  border-color: #0078cf !important;
+  border-width: 2.5px !important;
+  box-sizing: border-box !important;
 }
 
 /** font */
