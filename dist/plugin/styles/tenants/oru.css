@@ -49,7 +49,7 @@
   --cc-cookie-category-block-hover-bg: #e6e6e6 !important;
   --cc-cookie-category-block-hover-border: #636363 !important;
   --cc-cookie-category-expanded-block-bg: transparent !important;
-  --cc-cookie-category-expanded-block-hover-bg: #dee4e9 !important;
+  --cc-cookie-category-expanded-block-hover-bg: #636363 !important;
 
   --cc-overlay-bg: rgba(0, 0, 0, 0.65) !important;
   --cc-webkit-scrollbar-bg: var(--cc-section-category-border) !important;
