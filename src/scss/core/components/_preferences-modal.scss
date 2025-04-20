@@ -576,6 +576,7 @@ $service-toggle-knob-icon-width: 1.7px;
     }
 
     .pm__btn{
+        -webkit-font-smoothing: antialiased !important;
         color: var(--cc-btn-primary-color);
         background: var(--cc-btn-primary-bg);
         border: 1px solid var(--cc-btn-primary-border-color);

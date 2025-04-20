@@ -119,6 +119,9 @@
   text-transform: uppercase !important;
   font-weight: 700 !important;
   letter-spacing: 0.025em !important;
+  padding: 10px 24px !important; /* 10 px top/bottom, 24 px left/right */
+  height: 48px !important; /* 48 px height (3rem) */
+  font-size: 16px !important;
 }
 
 /** font */

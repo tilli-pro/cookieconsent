@@ -183,6 +183,7 @@ $footer-links-gap: 1.3rem;
     /** End **/
 
     .cm__btn{
+        -webkit-font-smoothing: antialiased !important;
         color: var(--cc-btn-primary-color);
         background: var(--cc-btn-primary-bg);
         border: 1px solid var(--cc-btn-primary-border-color);
