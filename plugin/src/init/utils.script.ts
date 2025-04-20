@@ -8,8 +8,12 @@ export function getThemeFromScriptUrl(scriptUrl: string): string | null {
 export function addHtmlClass(theme: string): void {
   const className = `cc--${theme}`;
   const htmlEl = document.documentElement;
+  console.debug({ className }, "[cc-plugin]: addHtmlClass");
+  console.debug({ htmlEl }, "[cc-plugin]: addHtmlClass");
 
   if (!htmlEl.classList.contains(className)) htmlEl.classList.add(className);
+
+  console.debug({ classList: htmlEl.classList }, "[cc-plugin]: addHtmlClass");
 }
 
 /**
@@ -48,8 +52,10 @@ export function getCurrentScriptUrl(): string | undefined {
  */
 export function initTheme(scriptUrl?: string): void {
   const url = scriptUrl ?? getCurrentScriptUrl();
+  console.debug({ url }, "[cc-plugin]: initTheme");
   if (!url) return;
 
   const theme = getThemeFromScriptUrl(url);
+  console.debug({ theme }, "[cc-plugin]: initTheme");
   if (theme) addHtmlClass(theme);
 }

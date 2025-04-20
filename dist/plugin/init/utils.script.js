@@ -7,8 +7,11 @@ export function getThemeFromScriptUrl(scriptUrl) {
 export function addHtmlClass(theme) {
     const className = `cc--${theme}`;
     const htmlEl = document.documentElement;
+    console.debug({ className }, "[cc-plugin]: addHtmlClass");
+    console.debug({ htmlEl }, "[cc-plugin]: addHtmlClass");
     if (!htmlEl.classList.contains(className))
         htmlEl.classList.add(className);
+    console.debug({ classList: htmlEl.classList }, "[cc-plugin]: addHtmlClass");
 }
 /**
  * determines the URL of the currently executing script
@@ -41,9 +44,11 @@ export function getCurrentScriptUrl() {
  */
 export function initTheme(scriptUrl) {
     const url = scriptUrl ?? getCurrentScriptUrl();
+    console.debug({ url }, "[cc-plugin]: initTheme");
     if (!url)
         return;
     const theme = getThemeFromScriptUrl(url);
+    console.debug({ theme }, "[cc-plugin]: initTheme");
     if (theme)
         addHtmlClass(theme);
 }
