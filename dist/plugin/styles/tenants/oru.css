@@ -123,6 +123,15 @@
   border: 1px solid #636363 !important;
 }
 
+.cc--tenant\:oru-light .cm__title,
+.cc--tenant\:oru-dark .cm__title,
+.cc--tenant\:oru-light .pm__title,
+.cc--tenant\:oru-dark .pm__title,
+.cc--tenant\:oru-light .pm__section-title,
+.cc--tenant\:oru-dark .pm__section-title {
+  font-weight: 800 !important;
+}
+
 .cc--tenant\:oru-light div.pm__section--toggle,
 .cc--tenant\:oru-dark div.pm__section--toggle {
   margin-bottom: 8px !important;

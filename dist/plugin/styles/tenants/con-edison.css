@@ -123,6 +123,15 @@
   border: 1px solid #636363 !important;
 }
 
+.cc--tenant\:con-edison-light .cm__title,
+.cc--tenant\:con-edison-dark .cm__title,
+.cc--tenant\:con-edison-light .pm__title,
+.cc--tenant\:con-edison-dark .pm__title,
+.cc--tenant\:con-edison-light .pm__section-title,
+.cc--tenant\:con-edison-dark .pm__section-title {
+  font-weight: 800 !important;
+}
+
 .cc--tenant\:con-edison-light div.pm__section--toggle,
 .cc--tenant\:con-edison-dark div.pm__section--toggle {
   margin-bottom: 8px !important;
