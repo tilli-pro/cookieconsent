@@ -137,6 +137,17 @@
   margin-bottom: 8px !important;
 }
 
+.cc--tenant\:con-edison-light .pm__section:not(:first-child),
+.cc--tenant\:con-edison-dark .pm__section:not(:first-child) {
+  padding: 0px !important;
+}
+
+.cc--tenant\:con-edison-light .pm__section:not(:first-child):hover,
+.cc--tenant\:con-edison-dark .pm__section:not(:first-child):hover {
+  background: inherit !important;
+  border-color: transparent !important;
+}
+
 .cc--tenant\:con-edison-light div.cm__btn-group,
 .cc--tenant\:con-edison-dark div.cm__btn-group,
 .cc--tenant\:con-edison-light div.cm__btns,

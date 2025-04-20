@@ -137,6 +137,17 @@
   margin-bottom: 8px !important;
 }
 
+.cc--tenant\:oru-light .pm__section:not(:first-child),
+.cc--tenant\:oru-dark .pm__section:not(:first-child) {
+  padding: 0px !important;
+}
+
+.cc--tenant\:oru-light .pm__section:not(:first-child):hover,
+.cc--tenant\:oru-dark .pm__section:not(:first-child):hover {
+  background: inherit !important;
+  border-color: transparent !important;
+}
+
 .cc--tenant\:oru-light div.cm__btn-group,
 .cc--tenant\:oru-dark div.cm__btn-group,
 .cc--tenant\:oru-light div.cm__btns,
