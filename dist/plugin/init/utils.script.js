@@ -7,11 +7,8 @@ export function getThemeFromScriptUrl(scriptUrl) {
 export function addHtmlClass(theme) {
     const className = `cc--${theme}`;
     const htmlEl = document.documentElement;
-    console.debug({ className }, "[cc-plugin]: addHtmlClass");
-    console.debug({ htmlEl }, "[cc-plugin]: addHtmlClass");
     if (!htmlEl.classList.contains(className))
         htmlEl.classList.add(className);
-    console.debug({ classList: htmlEl.classList }, "[cc-plugin]: addHtmlClass");
 }
 /**
  * determines the URL of the currently executing script
@@ -43,12 +40,24 @@ export function getCurrentScriptUrl() {
  *    initTheme();
  */
 export function initTheme(scriptUrl) {
-    const url = scriptUrl ?? getCurrentScriptUrl();
-    console.debug({ url }, "[cc-plugin]: initTheme");
-    if (!url)
+    const src = scriptUrl ?? getCurrentScriptUrl();
+    if (!src)
         return;
-    const theme = getThemeFromScriptUrl(url);
-    console.debug({ theme }, "[cc-plugin]: initTheme");
+    /** first, try to get theme from the direct script URL */
+    let theme = getThemeFromScriptUrl(src);
+    /** otherwise, try checking the URL of the script that loaded this script */
+    if (!theme) {
+        /** extract git SHA from the URL (looking for @<sha>/ in the path) */
+        const shaMatch = src.match(/@([0-9a-f]{7,40})\b/);
+        const sha = shaMatch ? shaMatch[1] : null;
+        if (sha && typeof document !== "undefined") {
+            /** find a <script> whose src contains the same SHA and "/init" in the path */
+            const scripts = Array.from(document.getElementsByTagName("script"));
+            const candidate = scripts.find((s) => s.src.includes(`@${sha}/`) && s.src.includes("/init"));
+            if (candidate)
+                theme = getThemeFromScriptUrl(candidate.src);
+        }
+    }
     if (theme)
         addHtmlClass(theme);
 }

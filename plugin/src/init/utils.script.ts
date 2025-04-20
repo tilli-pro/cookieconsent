@@ -47,9 +47,26 @@ export function getCurrentScriptUrl(): string | undefined {
  *    initTheme();
  */
 export function initTheme(scriptUrl?: string): void {
-  const url = scriptUrl ?? getCurrentScriptUrl();
-  if (!url) return;
+  const src = scriptUrl ?? getCurrentScriptUrl();
+  if (!src) return;
 
-  const theme = getThemeFromScriptUrl(url);
+  /** first, try to get theme from the direct script URL */
+  let theme = getThemeFromScriptUrl(src);
+
+  /** otherwise, try checking the URL of the script that loaded this script */
+  if (!theme) {
+    /** extract git SHA from the URL (looking for @<sha>/ in the path) */
+    const shaMatch = src.match(/@([0-9a-f]{7,40})\b/);
+    const sha = shaMatch ? shaMatch[1] : null;
+    if (sha && typeof document !== "undefined") {
+      /** find a <script> whose src contains the same SHA and "/init" in the path */
+      const scripts = Array.from(document.getElementsByTagName("script"));
+      const candidate = scripts.find((s) =>
+        s.src.includes(`@${sha}/`) && s.src.includes("/init")
+      );
+      if (candidate) theme = getThemeFromScriptUrl(candidate.src);
+    }
+  }
+  
   if (theme) addHtmlClass(theme);
 }
