@@ -21,12 +21,12 @@
     --cc-btn-primary-hover-bg
   ) !important;
 
-  --cc-btn-secondary-bg: #e2e8f0 !important;
+  --cc-btn-secondary-bg: #ffffff !important;
   --cc-btn-secondary-color: #334155 !important;
   --cc-btn-secondary-border-color: var(--cc-btn-secondary-bg) !important;
-  --cc-btn-secondary-hover-bg: #f1f5f9 !important;
+  --cc-btn-secondary-hover-bg: #e6e6e6 !important;
   --cc-btn-secondary-hover-color: #000000 !important;
-  --cc-btn-secondary-hover-border-color: #d4dae0 !important;
+  --cc-btn-secondary-hover-border-color: #636363 !important;
 
   --cc-separator-border-color: transparent !important;
 
@@ -63,7 +63,7 @@
 .cc--tenant\:con-edison-dark {
   --cc-modal-border-radius: 0px !important;
   --cc-btn-border-radius: 0px !important;
-  
+
   color-scheme: dark;
   --cc-bg: #000 !important;
   --cc-primary-color: #eff4f6 !important;
