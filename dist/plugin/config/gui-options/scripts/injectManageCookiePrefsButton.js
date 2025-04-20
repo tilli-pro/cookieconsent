@@ -1,23 +1,15 @@
 "use client";
 import ManageCookiePrefsButton, { containerId, } from "../html-components/ManageCookiePrefsButton.js";
 import cookiePrefsButtonDragObserver, { ontouchend, ontouchstart, } from "./cookiePrefsButtonDragObserver.js";
-const _showPreferences = () => {
-    console.debug("showPreferences [injectManageCookiePrefsButton]");
-};
-export const showPreferences = typeof CookieConsent !== "undefined" &&
-    typeof CookieConsent.showPreferences === "function"
-    ? CookieConsent.showPreferences
-    : _showPreferences;
-// (await import("@tilli-pro/cookieconsent")).showPreferences;
 /** injects the floating cookie consent "manage preferences" icon button into the DOM */
-const inject = () => {
+const inject = (showPreferences) => {
     const container = document.body.appendChild(Object.assign(document.createElement("div"), {
         id: containerId,
         innerHTML: ManageCookiePrefsButton( /* TODO: __LANGUAGE__ */),
         onclick: showPreferences /** prefer over `data-cc="show-preferencesModal"` -- @see https://cookieconsent.orestbida.com/reference/api-reference.html#showpreferences */,
         onmouseover: cookiePrefsButtonDragObserver,
         // [mobile (touch) support]
-        ontouchend,
+        ontouchend: (e) => ontouchend?.call(container, e, showPreferences),
         ontouchstart,
     }));
     /** load drag observer upon DOM injection (unfortunate fix to prevent the need for 2x "ontouchstart" events) */
@@ -25,7 +17,7 @@ const inject = () => {
     return container;
 };
 /** entry point */
-export function injectManageCookiePrefsButton() {
+export function injectManageCookiePrefsButton(showPreferences) {
     return ((container) => {
         /** observe the DOM (to handle the case where the injected manage prefs button somehow gets removed) */
         new MutationObserver(() => {
@@ -34,8 +26,9 @@ export function injectManageCookiePrefsButton() {
             if (alreadyInjected)
                 return;
             /** if the container is no longer in <body>, re-inject */
-            container = inject();
+            container = inject(showPreferences);
         }).observe(document.body, { childList: true, subtree: true });
         return container;
-    })(document.getElementById(containerId) ?? inject());
+    })(document.getElementById(containerId) ??
+        inject(showPreferences));
 }

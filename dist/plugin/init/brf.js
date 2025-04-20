@@ -3,6 +3,7 @@ import { LABELS } from "../config/categories/labels.js";
 import cookies from "../config/cookies/index.js";
 import { run } from "../init.js";
 import { makeInitFn, stripInvalidLinkedCategoriesFromTranslations, } from "./utils.js";
+import { showPreferences } from "../config/gui-options/scripts/showPreferences.mjs.js";
 // TODO: auto-detect detect language
 const __LANGUAGE__ = "en"; // "English" ("English")
 const categories = {
@@ -61,5 +62,5 @@ const config = {
     language,
 };
 // console.debug({ config }, "Initializing Cookie Consent (BRF)...");
-const init = makeInitFn(run, config);
+const init = makeInitFn(run, config, showPreferences);
 void init();

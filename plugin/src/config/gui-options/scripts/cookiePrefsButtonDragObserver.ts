@@ -3,11 +3,7 @@
 import type * as _CookieConsent from "@tilli-pro/cookieconsent";
 
 import { buttonId } from "../html-components/ManageCookiePrefsButton";
-// import { showPreferences } from "./injectManageCookiePrefsButton";
-
-const showPreferences = () => {
-  console.debug("showPreferences");
-};
+import type { ShowPreferencesFn } from "./showPreferences.d";
 
 /**
  * attach a MutationObserver the **first time** the user hovers over–
@@ -149,6 +145,7 @@ export type HTMLDivElementWithDragObserver = HTMLDivElement & {
 export const ontouchend = function ontouchend(
   this: HTMLDivElementWithDragObserver,
   e: TouchEvent,
+  showPreferences: ShowPreferencesFn,
 ): void {
   const touch = e.changedTouches[0];
   const { clientX: endX, clientY: endY } = touch ?? {};
@@ -172,7 +169,7 @@ export const ontouchend = function ontouchend(
   /** reset coordinates to avoid future issues */
   this._startX = null;
   this._startY = null;
-} as HTMLDivElementWithDragObserver["ontouchend"];
+} // as HTMLDivElementWithDragObserver["ontouchend"]; // disabled since we added `showPreferences` as a param
 
 /** store the touch start coordinates */
 export const ontouchstart = function ontouchstart(

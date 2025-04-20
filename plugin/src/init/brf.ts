@@ -8,6 +8,7 @@ import {
   makeInitFn,
   stripInvalidLinkedCategoriesFromTranslations,
 } from "./utils";
+import { showPreferences } from "../config/gui-options/scripts/showPreferences.mjs";
 
 // TODO: auto-detect detect language
 const __LANGUAGE__ = "en"; // "English" ("English")
@@ -74,5 +75,5 @@ const config: CookieConsentConfig = {
 };
 
 // console.debug({ config }, "Initializing Cookie Consent (BRF)...");
-const init = makeInitFn(run, config);
+const init = makeInitFn(run, config, showPreferences);
 void init();

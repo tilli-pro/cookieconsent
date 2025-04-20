@@ -1,9 +1,5 @@
 "use client";
 import { buttonId } from "../html-components/ManageCookiePrefsButton.js";
-// import { showPreferences } from "./injectManageCookiePrefsButton.js";
-const showPreferences = () => {
-    console.debug("showPreferences");
-};
 /**
  * attach a MutationObserver the **first time** the user hovers over–
  * enabling a limited "drag up" functionality for the floating button.
@@ -119,7 +115,7 @@ export default (function (e) {
         attachDragEvents(button);
 });
 /** determine whether the user "tapped" or "dragged" (open prefs if "tapped") */
-export const ontouchend = function ontouchend(e) {
+export const ontouchend = function ontouchend(e, showPreferences) {
     const touch = e.changedTouches[0];
     const { clientX: endX, clientY: endY } = touch ?? {};
     if (!endX || !endY)
@@ -137,7 +133,7 @@ export const ontouchend = function ontouchend(e) {
     /** reset coordinates to avoid future issues */
     this._startX = null;
     this._startY = null;
-};
+}; // as HTMLDivElementWithDragObserver["ontouchend"]; // disabled since we added `showPreferences` as a param
 /** store the touch start coordinates */
 export const ontouchstart = function ontouchstart(e) {
     const touch = e.touches[0];

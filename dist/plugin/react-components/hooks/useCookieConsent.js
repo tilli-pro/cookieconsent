@@ -4,11 +4,12 @@ import { run } from "@tilli-pro/cookieconsent";
 import { COOKIE_CONSENT_ENABLED } from "../../_consts.js";
 import config from "../../config/index.js";
 import { makeInitFn } from "../../init/utils.js";
+import { showPreferences } from "../../config/gui-options/scripts/showPreferences.node.js";
 export function useCookieConsent() {
     useEffect(() => {
         if (!COOKIE_CONSENT_ENABLED)
             return;
-        const init = makeInitFn(run, config);
+        const init = makeInitFn(run, config, showPreferences);
         void init();
     }, []);
 }

@@ -6,6 +6,7 @@ import {
   makeInitFn,
   stripInvalidLinkedCategoriesFromTranslations,
 } from "./utils";
+import { showPreferences } from "../config/gui-options/scripts/showPreferences.mjs";
 
 const categories: CookieConsentConfig["categories"] = {
   necessary: {
@@ -41,5 +42,5 @@ const config: CookieConsentConfig = {
 };
 
 // console.debug({ config }, "Initializing Cookie Consent (tilli Website)...");
-const init = makeInitFn(run, config);
+const init = makeInitFn(run, config, showPreferences);
 void init();

@@ -1,7 +1,5 @@
 "use client";
 
-import type * as _CookieConsent from "@tilli-pro/cookieconsent";
-
 import type { HTMLDivElementWithDragObserver } from "./cookiePrefsButtonDragObserver";
 import ManageCookiePrefsButton, {
   containerId,
@@ -10,26 +8,10 @@ import cookiePrefsButtonDragObserver, {
   ontouchend,
   ontouchstart,
 } from "./cookiePrefsButtonDragObserver";
-
-declare const CookieConsent:
-  | {
-      showPreferences?: typeof _CookieConsent.showPreferences;
-    }
-  | undefined;
-
-const _showPreferences = () => {
-  console.debug("showPreferences [injectManageCookiePrefsButton]");
-};
-
-export const showPreferences =
-  typeof CookieConsent !== "undefined" &&
-  typeof CookieConsent.showPreferences === "function"
-    ? CookieConsent.showPreferences
-    : _showPreferences;
-    // (await import("@tilli-pro/cookieconsent")).showPreferences;
+import type { ShowPreferencesFn } from "./showPreferences.d";
 
 /** injects the floating cookie consent "manage preferences" icon button into the DOM */
-const inject = (): HTMLDivElement => {
+const inject = (showPreferences: ShowPreferencesFn): HTMLDivElement => {
   const container = document.body.appendChild(
     Object.assign(document.createElement("div"), {
       id: containerId,
@@ -38,7 +20,7 @@ const inject = (): HTMLDivElement => {
         showPreferences /** prefer over `data-cc="show-preferencesModal"` -- @see https://cookieconsent.orestbida.com/reference/api-reference.html#showpreferences */,
       onmouseover: cookiePrefsButtonDragObserver,
       // [mobile (touch) support]
-      ontouchend,
+      ontouchend: (e) => ontouchend?.call(container, e, showPreferences),
       ontouchstart,
     } satisfies Partial<HTMLDivElement>),
   ) as HTMLDivElementWithDragObserver;
@@ -50,7 +32,9 @@ const inject = (): HTMLDivElement => {
 };
 
 /** entry point */
-export function injectManageCookiePrefsButton(): ReturnType<typeof inject> {
+export function injectManageCookiePrefsButton(
+  showPreferences: ShowPreferencesFn,
+): ReturnType<typeof inject> {
   return ((container) => {
     /** observe the DOM (to handle the case where the injected manage prefs button somehow gets removed) */
     new MutationObserver(() => {
@@ -60,11 +44,12 @@ export function injectManageCookiePrefsButton(): ReturnType<typeof inject> {
       if (alreadyInjected) return;
 
       /** if the container is no longer in <body>, re-inject */
-      container = inject();
+      container = inject(showPreferences);
     }).observe(document.body, { childList: true, subtree: true });
 
     return container;
   })(
-    (document.getElementById(containerId) as HTMLDivElement | null) ?? inject(),
+    (document.getElementById(containerId) as HTMLDivElement | null) ??
+      inject(showPreferences),
   );
 }
