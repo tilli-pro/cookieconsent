@@ -162,6 +162,7 @@ $service-toggle-knob-icon-width: 1.7px;
             margin-bottom: $cc-btn-gap;
 
             .pm__section-title{
+                -webkit-font-smoothing: antialiased !important;
                 width: 100%;
                 display: flex;
                 justify-content: space-between;
