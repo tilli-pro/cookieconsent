@@ -58,6 +58,7 @@
 }
 
 .cc--tenant\:frontier-dark {
+  color-scheme: dark;
   --cc-bg: #000 !important;
   --cc-primary-color: #eff4f6 !important;
   --cc-secondary-color: #b1bdc3 !important;

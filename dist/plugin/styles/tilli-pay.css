@@ -60,7 +60,8 @@
   --cc-footer-border-color: #e4eaed !important;
 }
 
-.cc--nudge-dark {
+.cc--tilli-pay-dark {
+  color-scheme: dark;
   --cc-bg: #000 !important;
   --cc-primary-color: #eff4f6 !important;
   --cc-secondary-color: #b1bdc3 !important;
