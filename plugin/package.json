@@ -1,6 +1,6 @@
 {
   "name": "@tilli-pro/cookieconsent-plugin",
-  "version": "0.7.75",
+  "version": "0.7.76",
   "private": false,
   "publishConfig": {
     "access": "public"
@@ -28,7 +28,7 @@
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
   "dependencies": {
-    "@tilli-pro/cookieconsent": "3.3.9"
+    "@tilli-pro/cookieconsent": "3.3.11"
   },
   "devDependencies": {
     "@tilli-pro/eslint-config": "0.3.7",
