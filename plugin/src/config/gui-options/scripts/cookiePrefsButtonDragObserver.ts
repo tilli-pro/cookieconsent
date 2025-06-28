@@ -35,9 +35,7 @@ export default (function <IsTouch extends boolean = false>(
   // DRAG LOGIC
   function onMouseDown(this: HTMLElement, e: MouseEvent) {
     if (e.button !== 0) return; // only drag on left-click
-    try {
-      e.preventDefault();
-    } catch {}
+    // e.preventDefault(); // disabled since we're using passive event listeners - causes an error now
 
     isDragging = true;
     startY = e.clientY;
@@ -70,9 +68,7 @@ export default (function <IsTouch extends boolean = false>(
   // - we're using the same logic as mouse dragging, but with touch events
   function onTouchStart(this: HTMLElement, e: TouchEvent) {
     if (e.touches?.length !== 1) return; // only drag with one finger
-    try {
-      e.preventDefault();
-    } catch {}
+    // e.preventDefault(); // disabled since we're using passive event listeners - causes an error now
     
     isDragging = true;
     startY = e.touches[0]?.clientY ?? startY;

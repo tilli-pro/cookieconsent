@@ -66,6 +66,7 @@ export const injectUTMParametersIntoATags = (attempt: number = 1) => {
       const parameters = aTag.id.endsWith("-preferences")
         ? {
             // handle the case where the a tag is via the preferences modal instead of the banner
+            ..._preferences,
             content: _preferences.content.replace("-banner", "-preferences"),
           }
         : _preferences;
