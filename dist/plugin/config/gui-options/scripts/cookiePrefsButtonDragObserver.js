@@ -26,10 +26,7 @@ export default (function (e) {
     function onMouseDown(e) {
         if (e.button !== 0)
             return; // only drag on left-click
-        try {
-            e.preventDefault();
-        }
-        catch { }
+        // e.preventDefault(); // disabled since we're using passive event listeners - causes an error now
         isDragging = true;
         startY = e.clientY;
         /** on each new drag, read the button’s *current* bottom */
@@ -58,10 +55,7 @@ export default (function (e) {
     function onTouchStart(e) {
         if (e.touches?.length !== 1)
             return; // only drag with one finger
-        try {
-            e.preventDefault();
-        }
-        catch { }
+        // e.preventDefault(); // disabled since we're using passive event listeners - causes an error now
         isDragging = true;
         startY = e.touches[0]?.clientY ?? startY;
         const buttonStyle = window.getComputedStyle(this);
