@@ -63,7 +63,9 @@ export const injectUTMParametersIntoATags = (
     source: new URL(window.location.href).hostname, // use the hostname of the current page as the source
   };
 
-  const aTags = document.querySelectorAll("a");
+  const ccMain = document.getElementById("cc-main");
+  const aTags = ccMain?.querySelectorAll("a") ?? [];
+
   aTags.forEach((aTag) => {
     if (A_TAG_IDS_TO_INJECT_UTM_PARAMETERS.includes(aTag.id)) {
       const parameters = aTag.id.endsWith("-preferences")
