@@ -108,13 +108,13 @@ export default (function <IsTouch extends boolean = false>(
     highestBottomPx = originalBottomPx + maxDragPx;
 
     /** attach the mouse events for dragging */
-    buttonEl.addEventListener("mousedown", onMouseDown.bind(buttonEl));
-    document.addEventListener("mousemove", onMouseMove.bind(buttonEl));
-    document.addEventListener("mouseup", onMouseUp);
+    buttonEl.addEventListener("mousedown", onMouseDown.bind(buttonEl), { passive: true });
+    document.addEventListener("mousemove", onMouseMove.bind(buttonEl), { passive: true });
+    document.addEventListener("mouseup", onMouseUp, { passive: true });
     // [mobile (touch) support]
-    buttonEl.addEventListener("touchstart", onTouchStart.bind(buttonEl));
-    document.addEventListener("touchmove", onTouchMove.bind(buttonEl));
-    document.addEventListener("touchend", onTouchEnd);
+    buttonEl.addEventListener("touchstart", onTouchStart.bind(buttonEl), { passive: true });
+    document.addEventListener("touchmove", onTouchMove.bind(buttonEl), { passive: true });
+    document.addEventListener("touchend", onTouchEnd, { passive: true });
   }
 
   // MUTATION OBSERVER – for if the button is removed/re-added
