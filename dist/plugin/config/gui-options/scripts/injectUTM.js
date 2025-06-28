@@ -20,7 +20,7 @@ const A_TAG_IDS_TO_INJECT_UTM_PARAMETERS = [
     /** preferences modal */
     "tilli-cc-privacy-policy-link-preferences",
 ];
-export const injectUTMParametersIntoATags = (attempt = 1) => {
+export const injectUTMParametersIntoATags = (maxAttempts = 30, attempt = 1) => {
     const _preferences = {
         ...DEFAULT_UTM_PARAMETERS,
         source: new URL(window.location.href).hostname, // use the hostname of the current page as the source
@@ -39,8 +39,8 @@ export const injectUTMParametersIntoATags = (attempt = 1) => {
             aTag.setAttribute("data-tilli-cc-utm-injected", "true");
         }
     });
-    if (attempt <= 3)
-        setTimeout(() => injectUTMParametersIntoATags(attempt + 1), 1_000); // retry up to 3 times, handles edge case where the a tags are not yet loaded (e.g., for the preferences modal)
+    if (attempt <= maxAttempts)
+        setTimeout(() => injectUTMParametersIntoATags(maxAttempts, attempt + 1), 1_000); // retry up to 3 times, handles edge case where the a tags are not yet loaded (e.g., for the preferences modal)
 };
 /**
  * adds UTM parameters to a URL.
