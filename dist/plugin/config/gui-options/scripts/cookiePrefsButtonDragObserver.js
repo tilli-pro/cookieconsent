@@ -26,7 +26,10 @@ export default (function (e) {
     function onMouseDown(e) {
         if (e.button !== 0)
             return; // only drag on left-click
-        e.preventDefault();
+        try {
+            e.preventDefault();
+        }
+        catch { }
         isDragging = true;
         startY = e.clientY;
         /** on each new drag, read the button’s *current* bottom */
@@ -55,7 +58,10 @@ export default (function (e) {
     function onTouchStart(e) {
         if (e.touches?.length !== 1)
             return; // only drag with one finger
-        e.preventDefault();
+        try {
+            e.preventDefault();
+        }
+        catch { }
         isDragging = true;
         startY = e.touches[0]?.clientY ?? startY;
         const buttonStyle = window.getComputedStyle(this);
@@ -90,13 +96,21 @@ export default (function (e) {
         lowestBottomPx = originalBottomPx;
         highestBottomPx = originalBottomPx + maxDragPx;
         /** attach the mouse events for dragging */
-        buttonEl.addEventListener("mousedown", onMouseDown.bind(buttonEl));
-        document.addEventListener("mousemove", onMouseMove.bind(buttonEl));
-        document.addEventListener("mouseup", onMouseUp);
+        buttonEl.addEventListener("mousedown", onMouseDown.bind(buttonEl), {
+            passive: true,
+        });
+        document.addEventListener("mousemove", onMouseMove.bind(buttonEl), {
+            passive: true,
+        });
+        document.addEventListener("mouseup", onMouseUp, { passive: true });
         // [mobile (touch) support]
-        buttonEl.addEventListener("touchstart", onTouchStart.bind(buttonEl));
-        document.addEventListener("touchmove", onTouchMove.bind(buttonEl));
-        document.addEventListener("touchend", onTouchEnd);
+        buttonEl.addEventListener("touchstart", onTouchStart.bind(buttonEl), {
+            passive: true,
+        });
+        document.addEventListener("touchmove", onTouchMove.bind(buttonEl), {
+            passive: true,
+        });
+        document.addEventListener("touchend", onTouchEnd, { passive: true });
     }
     // MUTATION OBSERVER – for if the button is removed/re-added
     const observer = new MutationObserver(() => {
