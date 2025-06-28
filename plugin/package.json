@@ -1,6 +1,6 @@
 {
   "name": "@tilli-pro/cookieconsent-plugin",
-  "version": "0.7.87",
+  "version": "0.7.88",
   "private": false,
   "publishConfig": {
     "access": "public"
