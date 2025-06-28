@@ -35,7 +35,9 @@ export default (function <IsTouch extends boolean = false>(
   // DRAG LOGIC
   function onMouseDown(this: HTMLElement, e: MouseEvent) {
     if (e.button !== 0) return; // only drag on left-click
-    e.preventDefault();
+    try {
+      e.preventDefault();
+    } catch {}
 
     isDragging = true;
     startY = e.clientY;
@@ -68,7 +70,10 @@ export default (function <IsTouch extends boolean = false>(
   // - we're using the same logic as mouse dragging, but with touch events
   function onTouchStart(this: HTMLElement, e: TouchEvent) {
     if (e.touches?.length !== 1) return; // only drag with one finger
-    e.preventDefault();
+    try {
+      e.preventDefault();
+    } catch {}
+    
     isDragging = true;
     startY = e.touches[0]?.clientY ?? startY;
 
@@ -108,12 +113,20 @@ export default (function <IsTouch extends boolean = false>(
     highestBottomPx = originalBottomPx + maxDragPx;
 
     /** attach the mouse events for dragging */
-    buttonEl.addEventListener("mousedown", onMouseDown.bind(buttonEl), { passive: true });
-    document.addEventListener("mousemove", onMouseMove.bind(buttonEl), { passive: true });
+    buttonEl.addEventListener("mousedown", onMouseDown.bind(buttonEl), {
+      passive: true,
+    });
+    document.addEventListener("mousemove", onMouseMove.bind(buttonEl), {
+      passive: true,
+    });
     document.addEventListener("mouseup", onMouseUp, { passive: true });
     // [mobile (touch) support]
-    buttonEl.addEventListener("touchstart", onTouchStart.bind(buttonEl), { passive: true });
-    document.addEventListener("touchmove", onTouchMove.bind(buttonEl), { passive: true });
+    buttonEl.addEventListener("touchstart", onTouchStart.bind(buttonEl), {
+      passive: true,
+    });
+    document.addEventListener("touchmove", onTouchMove.bind(buttonEl), {
+      passive: true,
+    });
     document.addEventListener("touchend", onTouchEnd, { passive: true });
   }
 
@@ -169,7 +182,7 @@ export const ontouchend = function ontouchend(
   /** reset coordinates to avoid future issues */
   this._startX = null;
   this._startY = null;
-} // as HTMLDivElementWithDragObserver["ontouchend"]; // disabled since we added `showPreferences` as a param
+}; // as HTMLDivElementWithDragObserver["ontouchend"]; // disabled since we added `showPreferences` as a param
 
 /** store the touch start coordinates */
 export const ontouchstart = function ontouchstart(
