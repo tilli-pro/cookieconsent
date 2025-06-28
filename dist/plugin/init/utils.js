@@ -1,5 +1,6 @@
 import { injectReactRemoveScrollToggle } from "../config/gui-options/scripts/forceDisableReactRemoveScroll.js";
 import { injectManageCookiePrefsButton } from "../config/gui-options/scripts/injectManageCookiePrefsButton.js";
+import { injectUTMParametersIntoATags } from "../config/gui-options/scripts/injectUTM.js";
 export const makeInitFn = (initFn, config, showPreferences) => {
     return async () => {
         /** inject the cookie-consent banner (pop-up) */
@@ -13,6 +14,8 @@ export const makeInitFn = (initFn, config, showPreferences) => {
          *    the user from scrolling within the manage prefs dialog
          */
         injectReactRemoveScrollToggle();
+        /** finally, inject UTM parameters into the DOM (a tags) */
+        injectUTMParametersIntoATags();
     };
 };
 export const stripInvalidLinkedCategoriesFromTranslations = (translations, categories, alsoClearCookieTables = false) => Object.fromEntries(Object.entries(translations).map(([lang, translation]) => {

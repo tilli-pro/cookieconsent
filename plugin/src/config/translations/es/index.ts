@@ -17,15 +17,15 @@ const COOKIE_TABLE_HEADERS: CookieTableHeaders = {
 export default {
   consentModal: {
     title: `${CookieIcon()} Aviso de Cookies`,
-    description: `{{revisionMessage}}Utilizamos cookies para mejorar tu experiencia en nuestro sitio web. Las cookies estrictamente necesarias son esenciales para el funcionamiento de este sitio y no se pueden desactivar. Otras cookies requieren tu consentimiento. Al hacer clic en "Aceptar todas", consientes el uso de nuestras cookies. Alternativamente, puedes gestionar tus preferencias de cookies seleccionando el botón "Gestionar preferencias" a continuación. Puedes revisar y actualizar tus preferencias de cookies en cualquier momento mediante el icono ${CookieIcon(1, 0.5, 0, -0.3333)} en la esquina inferior derecha. Por favor, lee nuestra <a href="https://tilli.pro/privacy-policy" target="_blank">Política de Privacidad</a> para más información.`,
+    description: `{{revisionMessage}}Utilizamos cookies para mejorar tu experiencia en nuestro sitio web. Las cookies estrictamente necesarias son esenciales para el funcionamiento de este sitio y no se pueden desactivar. Otras cookies requieren tu consentimiento. Al hacer clic en "Aceptar todas", consientes el uso de nuestras cookies. Alternativamente, puedes gestionar tus preferencias de cookies seleccionando el botón "Gestionar preferencias" a continuación. Puedes revisar y actualizar tus preferencias de cookies en cualquier momento mediante el icono ${CookieIcon(1, 0.5, 0, -0.3333)} en la esquina inferior derecha. Por favor, lee nuestra <a id="tilli-cc-privacy-policy-link-consent" href="https://tilli.pro/privacy-policy" target="_blank">Política de Privacidad</a> para más información.`,
     acceptAllBtn: "Aceptar todas",
     acceptNecessaryBtn: "Solo estrictamente necesarias",
     showPreferencesBtn: "Gestionar preferencias",
     // closeIconLabel: "Cerrar", // generates a big "X" ("accept necessary") button – let's disable it for now (to force a choice)
-    revisionMessage: `Nuestra <a href="https://tilli.pro/privacy-policy" target="_blank">Política de Privacidad</a> se actualizó recientemente. <br><br> `,
+    revisionMessage: `Nuestra <a id="tilli-cc-privacy-policy-link-revision" href="https://tilli.pro/privacy-policy" target="_blank">Política de Privacidad</a> se actualizó recientemente. <br><br> `,
     footer: `
-      <a href="https://tilli.pro/privacy-policy" target="_blank">Política de Privacidad</a>
-      <a href="https://tilli.pro/industries/terms-and-conditions" target="_blank">Términos y Condiciones</a>
+      <a id="tilli-cc-privacy-policy-link-footer" href="https://tilli.pro/privacy-policy" target="_blank">Política de Privacidad</a>
+      <a id="tilli-cc-terms-and-conditions-link-footer" href="https://tilli.pro/industries/terms-and-conditions" target="_blank">Términos y Condiciones</a>
 
       ${TilliXCallout(__LANGUAGE__)}
     `,
@@ -41,7 +41,7 @@ export default {
       {
         title: "Uso de cookies",
         description:
-          'Utilizamos cookies para garantizar la funcionalidad básica del sitio web y para mejorar tu experiencia en línea. Puedes elegir, para cada categoría, habilitarlas o deshabilitarlas cuando lo desees. Para más detalles relacionados con cookies y otros datos sensibles, por favor lee la <a href="https://tilli.pro/privacy-policy" target="_blank">Política de Privacidad</a> completa.',
+          'Utilizamos cookies para garantizar la funcionalidad básica del sitio web y para mejorar tu experiencia en línea. Puedes elegir, para cada categoría, habilitarlas o deshabilitarlas cuando lo desees. Para más detalles relacionados con cookies y otros datos sensibles, por favor lee la <a id="tilli-cc-privacy-policy-link-preferences" href="https://tilli.pro/privacy-policy" target="_blank">Política de Privacidad</a> completa.',
       },
 
       {

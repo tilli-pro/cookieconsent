@@ -3,6 +3,7 @@ import type * as CookieConsent from "@tilli-pro/cookieconsent";
 
 import { injectReactRemoveScrollToggle } from "../config/gui-options/scripts/forceDisableReactRemoveScroll";
 import { injectManageCookiePrefsButton } from "../config/gui-options/scripts/injectManageCookiePrefsButton";
+import { injectUTMParametersIntoATags } from "../config/gui-options/scripts/injectUTM";
 import type { ShowPreferencesFn } from "../config/gui-options/scripts/showPreferences.d";
 
 export const makeInitFn = (
@@ -24,6 +25,9 @@ export const makeInitFn = (
      *    the user from scrolling within the manage prefs dialog
      */
     injectReactRemoveScrollToggle();
+
+    /** finally, inject UTM parameters into the DOM (a tags) */
+    injectUTMParametersIntoATags();
   };
 };
 
@@ -48,7 +52,8 @@ export const stripInvalidLinkedCategoriesFromTranslations = (
 
         if (alsoClearCookieTables)
           filteredSections.forEach(
-            (section: CookieConsent.Section) => (section.cookieTable = undefined),
+            (section: CookieConsent.Section) =>
+              (section.cookieTable = undefined),
           );
 
         return [
